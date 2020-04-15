@@ -1,5 +1,6 @@
 <script>
   import Schedule from './Schedule.svelte'
+  import Ticker from 'svelte-ticker';
   export let title
   export let scheduleData
   let isPlaying = false 
@@ -21,15 +22,24 @@
   <div class = "footer-radio-container_logo">
     PUB Radio
   </div>
-  <div class = "footer-radio-container_playing">
-    NOW PLAYING: {title}
-  </div>
   <div class = "footer-radio-container_audio-btn" on:click={handleClick}>
     {#if isPlaying}
-      PAUSE
+      <!-- PAUSE -->
+      <img src = 'images/pause.svg' alt="PAUSE" />
     {:else}
-      PLAY
+      <!-- PLAY -->
+      <img src = 'images/play.svg'alt="PLAY" /> 
     {/if}
+  </div>
+  <div class = "footer-radio-container_playing">
+    <Ticker duration={450}>
+      <!-- repeat so anim always kicks off  -->
+      {#each Array(100) as _, i}
+        <div class = "footer-radio-container_playing_title">
+          <span>Playing Now:</span> {title}
+        </div>
+      {/each}
+    </Ticker>
   </div>
   <audio controls id = "audioEl" src = "https://r.0x56.net/live"></audio>
   <Schedule scheduleData={scheduleData} />
@@ -53,18 +63,42 @@
     border-left: 0;
     border-bottom: 0;
     &_logo {
-      width: 16.67%;
+      width: 15%;
       // border: solid black 1px;
       // border-radius: 10px 10px;
       margin-right: calc(#{$padding} / 2);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: $lime;
-      @include type-sans-lg;
+      color: $teal;
+      @include type-serif-lg;
+      font-style: italic;
+    }
+    &_audio-btn {
+      // width: 16.67%;
+      width: $footerHeight;
+      height: calc(#{$footerHeight} - .25rem);
+      border: solid white 1px;
+      background: black;
+      color: white;
+      border-radius: 50% 50%;
+      margin-right: calc(#{$padding} / 2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      @include type-sans-md;
+      & img {
+        max-width: 50%;
+        max-height: 50%;
+      }
+      &:hover {
+        // background: white;
+        color: black;
+      }
     }
     &_playing {
-      width: 50%;
+      width: calc(65% - (#{$footerHeight} / 2));
       border: solid white 1px;
       background: black;
       color: white;
@@ -73,11 +107,18 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      @include type-serif-lg;
-      color: $teal;
+      overflow: hidden;
+      @include type-sans-lg;
+      &_title {
+        margin-right: 2rem;
+        & span {
+          @include type-serif-lg;
+          color: $lime;
+        }
+      }
     }
     &_schedule {
-      width: 16.67%;
+      width: calc(25% - (#{$footerHeight} / 2));
       // background: pink;
       align-self: flex-end;
       overflow: scroll;
@@ -90,12 +131,14 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      @include type-sans-md;
       &:hover {
         background: white;
         color: black;
       }
       &.closed {
         height: 100%;
+        text-transform: uppercase;
       }
       &.open {
         height: 400px;
@@ -110,22 +153,6 @@
       }
       &_entry {
         margin-bottom: 1rem;
-      }
-    }
-    &_audio-btn {
-      width: 16.67%;
-      border: solid white 1px;
-      background: black;
-      color: white;
-      border-radius: 20px 20px;
-      margin-right: calc(#{$padding} / 2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      &:hover {
-        background: white;
-        color: black;
       }
     }
     & audio {

@@ -35,6 +35,7 @@ onMount(() => {
 				if (!isHovered) {
 					currentLabel = pathName
 					// margin of 20 is arbitrary
+					event.target.classList.add('active')
 					labelPosX = parseInt(event.target.getBoundingClientRect().left) + 25
 					labelPosY = parseInt(event.target.getBoundingClientRect().top) + 25
 					showLabel = true 
@@ -42,6 +43,7 @@ onMount(() => {
 				}
 			})
 			dot.addEventListener('mouseleave', function(event) {
+				event.target.classList.remove('active')
 				currentLabel = ''
 				showLabel = false
 				isHovered = false
@@ -502,6 +504,10 @@ onMount(() => {
   		 width: auto !important;
 			 & circle {
 				 cursor: pointer;
+					animation: live .75s linear infinite;
+					&.active {
+						animation: none;
+					}
 			 }
 		}
   }
@@ -510,10 +516,12 @@ onMount(() => {
 		position: fixed;
 		z-index: 4;
 		background: black;
-		padding: .5rem;
+		padding: .75rem;
 		border: solid white 1px;
+		border-radius: 15px 15px;
 		color: white;
 		text-transform: capitalize;
+		@include type-serif-md;
 	}
 
 	.map-btn {

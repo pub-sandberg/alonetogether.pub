@@ -29,6 +29,7 @@
     "svelte": "^3.0.0",
     "svelte-preprocess": "^3.7.1",
     "svelte-routing": "^1.4.2",
+    "svelte-ticker": "^1.0.0",
     "tabletop": "^1.6.2"
   },
   "dependencies": {

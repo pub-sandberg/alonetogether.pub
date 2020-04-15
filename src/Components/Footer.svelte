@@ -80,7 +80,7 @@
     border-left: 0;
     border-right: 0;
     border-bottom: 0;
-    // background: black;
+    background: black;
   }
 
   .footer-chat-container {

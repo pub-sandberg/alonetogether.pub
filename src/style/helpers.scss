@@ -8,40 +8,49 @@ $footerHeight: 75px;
 $chatHeight: $footerHeight;
 $chatWidth: 250px;
 
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&display=swap');
+
+@font-face {
+  font-family: 'Miguelito';
+  src: url('./fonts/miguelito-regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @mixin type-serif-sm {
   // will be baskerville
-  font-family: 'Times New Roman', serif;
-  font-size: 1.5rem; 
+  font-family: 'Libre Baskerville', serif;
+  font-size: .75rem; 
 }
 
 @mixin type-serif-md {
   // will be baskerville
-  font-family: 'Times New Roman', serif;
+  font-family: 'Libre Baskerville', serif;
   font-size: 1rem; 
 }
 
 @mixin type-serif-lg {
   // will be baskerville
-  font-family: 'Times New Roman', serif;
+  font-family: 'Libre Baskerville', serif;
   font-size: 1.5rem; 
 }
 
 @mixin type-sans-sm {
-  // will be baskerville
-  font-family: 'Helvetica', 'Arial', serif;
-  font-size: 1.5rem; 
+  font-family: 'Miguelito', 'Helvetica', 'Arial', serif;
+  font-size: .75rem; 
+  letter-spacing: -.025em;
 }
 
 @mixin type-sans-md {
-  // will be baskerville
-  font-family: 'Helvetica', 'Arial', serif;
+  font-family: 'Miguelito', 'Helvetica', 'Arial', serif;
   font-size: 1rem; 
+  letter-spacing: -.025em;
 }
 
 @mixin type-sans-lg {
-  // will be baskerville
-  font-family: 'Helvetica', 'Arial', serif;
+  font-family: 'Miguelito', 'Helvetica', 'Arial', serif;
   font-size: 1.5rem; 
+  letter-spacing: -.025em;
 }
 
 @keyframes live {
