@@ -1,32 +1,62 @@
 <script>
 	import { Router, Link, Route } from "svelte-routing";
+	import { onMount } from 'svelte';
 	import { fullScreen } from '../store.js'
 	import { navigate } from "svelte-routing";
 
+	let showLabel = false
+	let isHovered = false
+	let currentLabel = ''
+	let labelPosX
+	let labelPosY 
 
   function handleCloseClick(event) {
     $fullScreen ? fullScreen.set(false) : fullScreen.set(true)
 	}
 
-	function handlePointClick(path) {
-		console.log('now go to', path)
-		  navigate(path, { replace: true });
-	}
-
+	// function handlePointClick(path) {
+	// 	navigate(path, { replace: false })
+	// }
 	
-</script>
+	// setTimeout(() => {
+	// }, 2000)
 
-		<!-- <Router>
-			<nav>
-				<Link to="/">Home</Link>
-				<Link to="canteen">Canteen</Link>
-				<Link to="library">Library</Link>
-				<Link to="cinema">Cinema</Link>
-			</nav>
-		</Router> -->
+onMount(() => {
+	// time it out just in case
+	setTimeout(() => {
+		let dots = Array.from(document.querySelectorAll('svg circle'))
+		dots.forEach((dot, key) => {
+			dot.addEventListener('click', function(event) {
+				let path = event.target.getAttribute('id')
+				path === 'radio' ? navigate('/', { replace: false }) : navigate(path, { replace: false })
+			})
+			dot.addEventListener('mouseover', function(event) {
+				let pathName = event.target.getAttribute('id')
+				if (!isHovered) {
+					currentLabel = pathName
+					// margin of 20 is arbitrary
+					labelPosX = parseInt(event.target.getBoundingClientRect().left) + 25
+					labelPosY = parseInt(event.target.getBoundingClientRect().top) + 25
+					showLabel = true 
+					isHovered = true
+				}
+			})
+			dot.addEventListener('mouseleave', function(event) {
+				currentLabel = ''
+				showLabel = false
+				isHovered = false
+			})
+		})
+	}, 250)
+})
+
+</script>
 
 <div on:click={$fullScreen ? handleCloseClick : false} class = '{$fullScreen ? "map-container closed" : "map-container open"}'>
 	{#if !$fullScreen}
+	{#if showLabel}
+		<div style="left: {labelPosX + 'px'}; top: {labelPosY + 'px'}" class = "map-label">{currentLabel}</div>
+	{/if}
 <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="map" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="644.5px" height="989.2px" viewBox="-141.2 306.4 644.5 989.2" style="enable-background:new -141.2 306.4 644.5 989.2;"
@@ -39,7 +69,7 @@
 		.st4{fill:#CF7A29;}
 		.st5{fill:#8ECFBA;}
 	</style>
-	<circle on:click={() => handlePointClick('/')} id="radio" class="st0" cx="238.1" cy="832.1" r="14"/>
+	<circle id="radio" class="st0" cx="238.1" cy="832.1" r="14"/>
 	<g id="land">
 		<path class="st1" d="M436.3,613.6c3.3,0.7,1.7,3,2.5,5c2.5,6.2-1.8,6.7-2.5,8.7c-1.2,3.6,2.5,7.4,1.2,13.6c-1.5,7.3,4,6.2,7.4,7.4
 			c2.4,0.9,3.7,9.5-1.2,16.1c-3.7,5-1.2,13.6-6.2,17.3c-5,3.7-7.4,1.2-7.4,6.2c0,4.6,3.7,11.5,3.7,16.1c0,8.7-8.7,8.7-8.7,17.3
@@ -425,11 +455,17 @@
 			S351.2,1095.3,347.7,1088.6z"/>
 	</g>
 
-	<circle on:click={() => handlePointClick('information')} id="information" class="st3" cx="244.5" cy="553" r="23.9"/>
+	<!-- <circle on:click={() => handlePointClick('information')} id="information" class="st3" cx="244.5" cy="553" r="23.9"/>
 	<circle on:click={() => handlePointClick('canteen')} id="canteen" class="st3" cx="-59" cy="1038.3" r="12.3"/>
 	<circle on:click={() => handlePointClick('guestbook')} id="guestbook" class="st4" cx="413.3" cy="1097.8" r="23.9"/>
 	<circle on:click={() => handlePointClick('library')} id="library" class="st4" cx="21.2" cy="677.5" r="23.9"/>
-	<circle on:click={() => handlePointClick('cinema')} id="cinema" class="st5" cx="66.6" cy="434.8" r="14"/>
+	<circle on:click={() => handlePointClick('cinema')} id="cinema" class="st5" cx="66.6" cy="434.8" r="14"/> -->
+
+	<circle id="information" class="st3" cx="244.5" cy="553" r="23.9"/>
+	<circle id="canteen" class="st3" cx="-59" cy="1038.3" r="12.3"/>
+	<circle id="guestbook" class="st4" cx="413.3" cy="1097.8" r="23.9"/>
+	<circle id="library" class="st4" cx="21.2" cy="677.5" r="23.9"/>
+	<circle id="cinema" class="st5" cx="66.6" cy="434.8" r="14"/>
 
 	</svg>
 
@@ -470,6 +506,16 @@
 			 }
 		}
   }
+
+	.map-label {
+		position: fixed;
+		z-index: 4;
+		background: black;
+		padding: .5rem;
+		border: solid white 1px;
+		color: white;
+		text-transform: capitalize;
+	}
 
 	.map-btn {
 		transform: rotateZ(-90deg);

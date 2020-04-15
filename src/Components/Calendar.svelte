@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios'
 import moment from 'moment'
+import { navigate } from "svelte-routing"
 const calendarId = process.env.GOOGLE_CALENDAR_ID
 const calendarKey = process.env.GOOGLE_CALENDAR_KEY
 
@@ -34,6 +35,16 @@ function isNow(start, end) {
   return now >= startTime && now < endTime ? true : false 
 }
 
+function isInternal(loc) {
+  let internalPages = ['cinema', 'library', 'canteen', 'radio']
+  return internalPages.includes(loc.toLowerCase()) ? true : false
+}
+
+function handleLinkClick(loc) {
+  let page = loc.toLowerCase()
+  navigate(page, { replace: false })
+}
+
 </script>
 
 <div class = {"calendar-container"}>
@@ -45,15 +56,30 @@ function isNow(start, end) {
       {:then items}
       {#each items as item}
           {#if moment(item.start.dateTime).isAfter(quarantineStart, 'day') && item.start.dateTime !== undefined}
-          <div class = {isNow(item.start.dateTime, item.end.dateTime) ? "calendar-container_entry live" : "calendar-container_entry"} >
-            <!-- {#if item.location !== undefined} -->
-              <!-- todo: check if internal link or not + use router to push if so -->
-              <a href = {item.location} >
+            {#if item.location !== undefined}
+              {#if isInternal(item.location)}
+                <div class = {isNow(item.start.dateTime, item.end.dateTime) ? "calendar-container_entry live" : "calendar-container_entry"} >
+                  <!-- todo: check if internal link or not + use router to push if so -->
+                  <div on:click={() => handleLinkClick(item.location)}>
+                    <div>{moment(item.start.dateTime).format('DD.MM.YYYY, h:mma')}</div>
+                    <div>{item.summary}</div>
+                  </div>
+                </div>
+              {:else}
+                <div class = {isNow(item.start.dateTime, item.end.dateTime) ? "calendar-container_entry live" : "calendar-container_entry"} >
+                  <!-- todo: check if internal link or not + use router to push if so -->
+                  <a href = {item.location} target="_blank">
+                    <div>{moment(item.start.dateTime).format('DD.MM.YYYY, h:mma')}</div>
+                    <div>{item.summary}</div>
+                  </a>
+                </div>
+              {/if}
+            {:else}
+              <div class = {isNow(item.start.dateTime, item.end.dateTime) ? "calendar-container_entry live" : "calendar-container_entry"} >
                 <div>{moment(item.start.dateTime).format('DD.MM.YYYY, h:mma')}</div>
                 <div>{item.summary}</div>
-              </a>
-            <!-- {/if} -->
-          </div>
+              </div>
+            {/if}
           {/if}
         {/each}
     {/await}

@@ -2,6 +2,7 @@
   import axios from 'axios'
   import moment from 'moment'
   import Radio from './Footer/Radio.svelte'
+  import Chat from './Footer/Chat.svelte'
   
   const spreadsheetId = process.env.GOOGLE_SPREADSHEET_ID
   const spreadsheetKey = process.env.GOOGLE_SPREADSHEET_KEY
@@ -57,7 +58,8 @@
   {/if}
   <!-- will need to add a class to render style conditionally for chat -->
   <div class = "footer-chat-container">
-    <script id="cid0020000247791998510" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 400px;height: 500px;">{"handle":"pubpillowstream","arch":"js","styles":{"a":"000000","b":100,"c":"FFFFFF","d":"FFFFFF","e":"000000","g":"ffffff","h":"000000","j":"ffffff","k":"808080","l":"000000","m":"000000","n":"FFFFFF","p":"12.96","q":"000000","r":100,"t":0,"ab":false,"usricon":0,"pos":"br","cv":1,"cvfnt":"Baskerville, 'Baskerville Old Face', 'Hoefler Text', Garamond, 'Times New Roman', serif, sans-serif","cvfntsz":"14px","cvbg":"000000","cvfg":"ffffff","cvw":250,"cvh":70,"sbc":"ffffff","surl":0,"allowpm":0,"ticker":1,"fwtickm":1}}</script>
+    <Chat />
+    <!-- <script id="cid0020000247791998510" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 400px;height: 500px;">{"handle":"pubpillowstream","arch":"js","styles":{"a":"000000","b":100,"c":"FFFFFF","d":"FFFFFF","e":"000000","g":"ffffff","h":"000000","j":"ffffff","k":"808080","l":"000000","m":"000000","n":"FFFFFF","p":"12.96","q":"000000","r":100,"t":0,"ab":false,"usricon":0,"pos":"br","cv":1,"cvfnt":"Baskerville, 'Baskerville Old Face', 'Hoefler Text', Garamond, 'Times New Roman', serif, sans-serif","cvfntsz":"14px","cvbg":"000000","cvfg":"ffffff","cvw":250,"cvh":70,"sbc":"ffffff","surl":0,"allowpm":0,"ticker":1,"fwtickm":1}}</script> -->
   </div>
 </div>
 
