@@ -20,9 +20,9 @@
   
   .view-container {
     width: 66.6%;
-    height: 100%;
+    height: calc(100% - #{$footerHeight});
     display: flex;
-    border: solid black 1px;
+    border: solid white 1px;
     border-right: 0;
     border-top: 0;
     border-bottom: 0;

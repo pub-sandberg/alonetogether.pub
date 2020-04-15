@@ -58,26 +58,44 @@ function handleLinkClick(loc) {
           {#if moment(item.start.dateTime).isAfter(quarantineStart, 'day') && item.start.dateTime !== undefined}
             {#if item.location !== undefined}
               {#if isInternal(item.location)}
-                <div class = {isNow(item.start.dateTime, item.end.dateTime) ? "calendar-container_entry live" : "calendar-container_entry"} >
+                <div class = {isNow(item.start.dateTime, item.end.dateTime) ? "calendar-container_entry live link" : "calendar-container_entry link"} >
                   <!-- todo: check if internal link or not + use router to push if so -->
                   <div on:click={() => handleLinkClick(item.location)}>
-                    <div>{moment(item.start.dateTime).format('DD.MM.YYYY, h:mma')}</div>
-                    <div>{item.summary}</div>
+                    {#if isNow(item.start.dateTime, item.end.dateTime)}
+                      <div class = "calendar-container_entry_live">LIVE NOW</div>
+                      <div class = "calendar-container_entry_title live">{item.summary}</div>
+                    {:else}
+                      <div class = "calendar-container_entry_date">{moment(item.start.dateTime).format('DD.MM.YYYY')}</div>
+                      <div class = "calendar-container_entry_time">{moment(item.start.dateTime).format('h:mma')}</div>
+                      <div class = "calendar-container_entry_title">{item.summary}</div>
+                    {/if}
                   </div>
                 </div>
               {:else}
-                <div class = {isNow(item.start.dateTime, item.end.dateTime) ? "calendar-container_entry live" : "calendar-container_entry"} >
+                <div class = {isNow(item.start.dateTime, item.end.dateTime) ? "calendar-container_entry live link" : "calendar-container_entry link"} >
                   <!-- todo: check if internal link or not + use router to push if so -->
                   <a href = {item.location} target="_blank">
-                    <div>{moment(item.start.dateTime).format('DD.MM.YYYY, h:mma')}</div>
-                    <div>{item.summary}</div>
+                    {#if isNow(item.start.dateTime, item.end.dateTime)}
+                      <div class = "calendar-container_entry_live">LIVE NOW</div>
+                      <div class = "calendar-container_entry_title live">{item.summary}</div>
+                    {:else}
+                      <div class = "calendar-container_entry_date">{moment(item.start.dateTime).format('DD.MM.YYYY')}</div>
+                      <div class = "calendar-container_entry_time">{moment(item.start.dateTime).format('h:mma')}</div>
+                      <div class = "calendar-container_entry_title">{item.summary}</div>
+                    {/if}
                   </a>
                 </div>
               {/if}
             {:else}
               <div class = {isNow(item.start.dateTime, item.end.dateTime) ? "calendar-container_entry live" : "calendar-container_entry"} >
-                <div>{moment(item.start.dateTime).format('DD.MM.YYYY, h:mma')}</div>
-                <div>{item.summary}</div>
+                {#if isNow(item.start.dateTime, item.end.dateTime)}
+                  <div class = "calendar-container_entry_live">LIVE NOW</div>
+                  <div class = "calendar-container_entry_title live">{item.summary}</div>
+                {:else}
+                  <div class = "calendar-container_entry_date">{moment(item.start.dateTime).format('DD.MM.YYYY')}</div>
+                  <div class = "calendar-container_entry_time">{moment(item.start.dateTime).format('h:mma')}</div>
+                  <div class = "calendar-container_entry_title">{item.summary}</div>
+                {/if}
               </div>
             {/if}
           {/if}
@@ -91,18 +109,71 @@ function handleLinkClick(loc) {
   .calendar-container {
     width: 50%;
     height: 100%;
-    border: solid black 1px;
+    border: solid white 1px;
+    // background: black;
     border-top: 0;
     border-bottom: 0;
     border-left: 0;
-    background: red;
     overflow: scroll;
+    padding: calc(#{$padding} / 2);
+    display: flex;
+    flex-flow: column;
+    &::-webkit-scrollbar {
+      display: none;
+    }
     &_entry {
-      margin-bottom: 1rem;
+      margin-bottom: calc(#{$padding} / 2);
+      border: solid white 1px;
+      // border-left: 0;
+      // border-right: 0;
+      border-radius: 25px 25px;
+      // width: calc(100% - 2px);
+      padding: .5rem;
+      order: 2;
+      background: black;
+      &_live {
+        color: $lime;
+        @include type-sans-lg;
+        animation: live .5s linear infinite;
+      }
+      &_date {
+        @include type-serif-md;
+        color: white;
+      }
+      &_time {
+        @include type-serif-md;
+        color: white;
+      }
+      &_title {
+        @include type-sans-lg;
+        color: $teal;
+        &.live {
+          color: white;
+        }
+      }
+      & a {
+        text-decoration: none;
+      }
+      &.link {
+        cursor: pointer;
+        &:hover {
+          background: white;
+          & .calendar-container_entry_date {
+            color: black;
+          }
+          & .calendar-container_entry_time {
+            color: black;
+          }
+          & .calendar-container_entry_title {
+            color: black;
+          }
+        }
+      }
       &.live {
         top: 0;
         background: black;
         position: sticky;
+        order: 1;
       }
     }
   }

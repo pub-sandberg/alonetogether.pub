@@ -1,2 +1,51 @@
 $blue: blue;
 $padding: .25rem;
+$lime: #b4cc04;
+$teal: #8ecfba;
+$gold: #e2c38a;
+// needs to remain same height
+$footerHeight: 75px;
+$chatHeight: $footerHeight;
+$chatWidth: 250px;
+
+@mixin type-serif-sm {
+  // will be baskerville
+  font-family: 'Times New Roman', serif;
+  font-size: 1.5rem; 
+}
+
+@mixin type-serif-md {
+  // will be baskerville
+  font-family: 'Times New Roman', serif;
+  font-size: 1rem; 
+}
+
+@mixin type-serif-lg {
+  // will be baskerville
+  font-family: 'Times New Roman', serif;
+  font-size: 1.5rem; 
+}
+
+@mixin type-sans-sm {
+  // will be baskerville
+  font-family: 'Helvetica', 'Arial', serif;
+  font-size: 1.5rem; 
+}
+
+@mixin type-sans-md {
+  // will be baskerville
+  font-family: 'Helvetica', 'Arial', serif;
+  font-size: 1rem; 
+}
+
+@mixin type-sans-lg {
+  // will be baskerville
+  font-family: 'Helvetica', 'Arial', serif;
+  font-size: 1.5rem; 
+}
+
+@keyframes live {
+  50% {
+    opacity: 0;
+  }
+}

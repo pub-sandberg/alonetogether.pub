@@ -477,11 +477,10 @@ onMount(() => {
 <style lang="scss" global>
   @import "./style/global.scss";
   .map-container {
-    height: calc(100% - 70px);
-		// transition: width .5s ease;
-		background: black;
-			display: flex;
-			align-items: center;
+    height: calc(100% - #{$footerHeight});
+		// background: black;
+		display: flex;
+		align-items: center;
 		&.open {
 			justify-content: center;
 			padding: .5rem;

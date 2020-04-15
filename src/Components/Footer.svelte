@@ -48,6 +48,7 @@
         {#if (isToday(items[0].values[0][0]))}
           <Radio title={items[0].values[0][1]} scheduleData={items[1]} />
         {:else}
+          <!-- w.i.p -->
           {#if (isFuture(items[0].values[0][0]))}
             <div>Next show is: {items[0].values[0][0]}</div>
           {:else}
@@ -70,16 +71,16 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-    // should be responsive?
-    height: 70px;
-    background: white;
-    padding: $padding;
+    height: $footerHeight;
+    // background: black;
+    // padding: $padding;
     display: flex;
     align-items: center;
-    border: solid black 1px;
+    border: solid white 1px;
     border-left: 0;
     border-right: 0;
     border-bottom: 0;
+    // background: black;
   }
 
   .footer-chat-container {

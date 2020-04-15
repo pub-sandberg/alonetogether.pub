@@ -3,7 +3,7 @@
   import { afterUpdate } from 'svelte';
 
   import Calendar from './Calendar.svelte';
-  import Chat from './Chat.svelte';
+  import Feed from './Feed.svelte';
   import { fullScreen } from '../store.js'
 
   // export prop
@@ -34,7 +34,7 @@
   <iframe class = '{loaded ? "frame" : "frame hidden"}' id = "site" src = '{url}'></iframe>
 {:else}
   <Calendar />
-  <Chat />
+  <Feed />
 {/if}
 
 
@@ -60,7 +60,7 @@
     text-align: center;
     text-transform: uppercase;
     // kind of strange; height of radio
-    margin-top: -70px;
+    // margin-top: -70px;
   }
 
   .fullscreen-btn {
