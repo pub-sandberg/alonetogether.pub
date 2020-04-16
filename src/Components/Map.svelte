@@ -1,6 +1,6 @@
 <script>
 	import { Router, Link, Route } from "svelte-routing";
-	import { onMount } from 'svelte';
+	import { onMount, afterUpdate } from 'svelte';
 	import { fullScreen } from '../store.js'
 	import { navigate } from "svelte-routing";
 
@@ -11,19 +11,22 @@
 	let labelPosY 
 
   function handleCloseClick(event) {
-    $fullScreen ? fullScreen.set(false) : fullScreen.set(true)
+		$fullScreen ? fullScreen.set(false) : fullScreen.set(true)
+		// would rather do without timeout
+		setTimeout(() => {
+			bindListeners()
+		}, 500)
 	}
 
-	// function handlePointClick(path) {
-	// 	navigate(path, { replace: false })
-	// }
-	
-	// setTimeout(() => {
-	// }, 2000)
+	onMount(() => {
+		// time it out just in case
+		setTimeout(() => {
+			bindListeners()
+		}, 250)
+	})
 
-onMount(() => {
-	// time it out just in case
-	setTimeout(() => {
+	function bindListeners() {
+		console.log('bind listeners to map')
 		let dots = Array.from(document.querySelectorAll('svg circle'))
 		dots.forEach((dot, key) => {
 			dot.addEventListener('click', function(event) {
@@ -49,8 +52,7 @@ onMount(() => {
 				isHovered = false
 			})
 		})
-	}, 250)
-})
+	}
 
 </script>
 
@@ -477,29 +479,35 @@ onMount(() => {
 </div>
 
 <style lang="scss" global>
-  @import "./style/global.scss";
+	@import "./style/global.scss";
+	@import "./style/helpers.scss";
+
   .map-container {
-    height: calc(100% - #{$footerHeight});
+		height: calc(100% - #{$footerHeight});
 		// background: black;
 		display: flex;
 		align-items: center;
 		&.open {
 			justify-content: center;
-			padding: .5rem;
+			padding: .5rem .5rem $menuHeight .5rem;
 			width: 33.3%;
 		}
 		&.closed {
 			width: 2rem;
-			background: white;
-			color: black;
+			background: black;
+			color: white;
 			cursor: pointer;
+			border: solid black 1px;
+			border-left: 0;
+			border-top: 0;
+			border-bottom: 0;
 			&:hover {
-				background: black;
-				color: white;
+				background: white;
+				color: black;
 			}
 		}
 		& svg {
-			 max-height: 100%;
+			 max-height: 95%;
 			 max-width: 100%;
   		 width: auto !important;
 			 & circle {

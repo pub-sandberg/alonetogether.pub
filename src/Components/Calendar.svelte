@@ -131,6 +131,9 @@ function handleLinkClick(loc) {
       padding: .5rem;
       order: 2;
       background: black;
+      &:last-child {
+        // margin-bottom: 1rem;
+      }
       &_live {
         color: $lime;
         @include type-sans-lg;

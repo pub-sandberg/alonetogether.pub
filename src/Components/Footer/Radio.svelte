@@ -2,6 +2,9 @@
   import Schedule from './Schedule.svelte'
   import Ticker from 'svelte-ticker';
   export let title
+  export let today
+  export let future
+  export let date
   export let scheduleData
   let isPlaying = false 
 
@@ -22,27 +25,36 @@
   <div class = "footer-radio-container_logo">
     PUB Radio
   </div>
-  <div class = "footer-radio-container_audio-btn" on:click={handleClick}>
-    {#if isPlaying}
-      <!-- PAUSE -->
-      <img src = 'images/pause.svg' alt="PAUSE" />
+  {#if today}
+    <div class = "footer-radio-container_audio-btn" on:click={handleClick}>
+      {#if isPlaying}
+        <!-- PAUSE -->
+        <img src = 'images/pause.svg' alt="PAUSE" />
+      {:else}
+        <!-- PLAY -->
+        <img src = 'images/play.svg'alt="PLAY" /> 
+      {/if}
+    </div>
+    <div class = "footer-radio-container_playing">
+      <Ticker duration={50}>
+        <!-- repeat so anim always kicks off  -->
+        {#each Array(10) as _, i}
+          <div class = "footer-radio-container_playing_title">
+            <span>Playing Now:</span> {title}
+          </div>
+        {/each}
+      </Ticker>
+    </div>
+    <audio controls id = "audioEl" src = "https://r.0x56.net/live"></audio>
+    <Schedule scheduleData={scheduleData} />
+  {:else}
+    {#if future}
+      <div class = "footer-radio-container_message">NO RADIO TODAY &#x1F61E;NEXT SHOW WILL BE ON {date} &#x1F603</div>
     {:else}
-      <!-- PLAY -->
-      <img src = 'images/play.svg'alt="PLAY" /> 
+      <div class = "footer-radio-container_message">NO RADIO TODAY &#x1F61E;</div>
     {/if}
-  </div>
-  <div class = "footer-radio-container_playing">
-    <Ticker duration={50}>
-      <!-- repeat so anim always kicks off  -->
-      {#each Array(10) as _, i}
-        <div class = "footer-radio-container_playing_title">
-          <span>Playing Now:</span> {title}
-        </div>
-      {/each}
-    </Ticker>
-  </div>
-  <audio controls id = "audioEl" src = "https://r.0x56.net/live"></audio>
-  <Schedule scheduleData={scheduleData} />
+  {/if}
+
 </div>
 
 <style lang="scss" global>
@@ -73,6 +85,16 @@
       color: $lime;
       @include type-serif-lg;
       font-style: italic;
+    }
+    &_message {
+      color: white;
+      @include type-sans-md;
+      align-self: center;
+      justify-self: center;
+      width: 75%;
+      margin-left: 5%;
+      padding: 0 1rem 0 1rem;
+      text-align: center;
     }
     &_audio-btn {
       // width: 16.67%;

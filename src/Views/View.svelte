@@ -8,25 +8,33 @@
 
 <div class = '{$fullScreen ? "view-container fullwidth" : "view-container"}'>
   <Router location={location}>
-    <Route path="canteen" component="{Frame}" name="Canteen" url="https://saschakrischock.com/atomchat" />
-    <Route path="library" component="{Frame}" name="Library" url="https://www.are.na/pub/library-2uw05wda6ro" />
-    <Route path="cinema" component="{Frame}" name="Cinema" url="https://pub.sandberg.nl/quarantine/auditorium" />
-    <Route path="/" component="{Frame}" />
+    <Route path="canteen" component="{Frame}" name="canteen" url="https://saschakrischock.com/atomchat" />
+    <Route path="library" component="{Frame}" name="library" url="https://www.are.na/pub/library-2uw05wda6ro" />
+    <Route path="cinema" component="{Frame}" name="cinema" />
+    <Route path="information" name="information" component="{Frame}" />
+    <Route path="archive" name="archive" component="{Frame}" />
+    <Route path="guestbook" name="guestbook" component="{Frame}" />
+    <Route path="/" name="home" component="{Frame}" />
   </Router>
 </div>
 
 <style lang="scss" global>
   @import "./style/global.scss";
-  
+  @import "./style/helpers.scss";
+
   .view-container {
     width: 66.6%;
-    height: calc(100% - #{$footerHeight});
+    // height: calc(100% - #{$footerHeight});
+    height: calc(100% - (#{$footerHeight} + #{$menuHeight}));
+		// padding-bottom: $menuHeight;
     display: flex;
     border: solid white 1px;
     border-right: 0;
     border-top: 0;
     border-bottom: 0;
+    overflow-y: scroll;
     // transition: width .5s ease;
+    // padding-bottom: $menuHeight;
     &.fullwidth {
       width: calc(100% - 2rem);
     }

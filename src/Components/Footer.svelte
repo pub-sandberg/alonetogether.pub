@@ -37,7 +37,7 @@
 
 </script>
 
-<!-- this will be a footer component most likely (with chat) -->
+
 <div class = "footer">
   {#if data === undefined}
     <div>Loading...</div>
@@ -46,21 +46,18 @@
       <div>Loading</div>
       {:then items}
         {#if (isToday(items[0].values[0][0]))}
-          <Radio title={items[0].values[0][1]} scheduleData={items[1]} />
+          <Radio today={true} future{false} title={items[0].values[0][1]} scheduleData={items[1]} date={items[0].values[0][0]} />
         {:else}
-          <!-- w.i.p -->
           {#if (isFuture(items[0].values[0][0]))}
-            <div>Next show is: {items[0].values[0][0]}</div>
+            <Radio today={false} future={true} date={items[0].values[0][0]} />
           {:else}
-            <div>No radio today :(</div>
+            <Radio today={false} future={false} date={items[0].values[0][0]} />
           {/if}
         {/if}
     {/await}
   {/if}
-  <!-- will need to add a class to render style conditionally for chat -->
   <div class = "footer-chat-container">
     <Chat />
-    <!-- <script id="cid0020000247791998510" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 400px;height: 500px;">{"handle":"pubpillowstream","arch":"js","styles":{"a":"000000","b":100,"c":"FFFFFF","d":"FFFFFF","e":"000000","g":"ffffff","h":"000000","j":"ffffff","k":"808080","l":"000000","m":"000000","n":"FFFFFF","p":"12.96","q":"000000","r":100,"t":0,"ab":false,"usricon":0,"pos":"br","cv":1,"cvfnt":"Baskerville, 'Baskerville Old Face', 'Hoefler Text', Garamond, 'Times New Roman', serif, sans-serif","cvfntsz":"14px","cvbg":"000000","cvfg":"ffffff","cvw":250,"cvh":70,"sbc":"ffffff","surl":0,"allowpm":0,"ticker":1,"fwtickm":1}}</script> -->
   </div>
 </div>
 

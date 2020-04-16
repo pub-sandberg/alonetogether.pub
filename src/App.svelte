@@ -2,9 +2,11 @@
 	import View from './views/View.svelte';
 	import Footer from './components/Footer.svelte';
 	import Map from './components/Map.svelte';
+	import Menu from './components/Menu.svelte';
 
 </script>
 
+<Menu />
 <main class = "page-container">
 	<Map  />
 	<View />

@@ -6,8 +6,14 @@
  box-sizing: border-box;
 }
 
+// keep it locked
+html {
+	position: fixed;
+	overflow: hidden;
+}
+
 html, body {
-	position: relative;
+	// position: relative;
 	width: 100%;
 	height: 100%;
 }
