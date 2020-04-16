@@ -31,7 +31,7 @@
 		dots.forEach((dot, key) => {
 			dot.addEventListener('click', function(event) {
 				let path = event.target.getAttribute('id')
-				path === 'radio' ? navigate('/', { replace: false }) : navigate(path, { replace: false })
+				path === 'home' ? navigate('/', { replace: false }) : navigate(path, { replace: false })
 			})
 			dot.addEventListener('mouseover', function(event) {
 				let pathName = event.target.getAttribute('id')
@@ -73,7 +73,7 @@
 		.st4{fill:#CF7A29;}
 		.st5{fill:#8ECFBA;}
 	</style>
-	<circle id="radio" class="st0" cx="238.1" cy="832.1" r="14"/>
+	<circle id="home" class="st0" cx="238.1" cy="832.1" r="14"/>
 	<g id="land">
 		<path class="st1" d="M436.3,613.6c3.3,0.7,1.7,3,2.5,5c2.5,6.2-1.8,6.7-2.5,8.7c-1.2,3.6,2.5,7.4,1.2,13.6c-1.5,7.3,4,6.2,7.4,7.4
 			c2.4,0.9,3.7,9.5-1.2,16.1c-3.7,5-1.2,13.6-6.2,17.3c-5,3.7-7.4,1.2-7.4,6.2c0,4.6,3.7,11.5,3.7,16.1c0,8.7-8.7,8.7-8.7,17.3
