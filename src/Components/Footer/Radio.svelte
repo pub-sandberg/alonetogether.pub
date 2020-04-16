@@ -32,9 +32,9 @@
     {/if}
   </div>
   <div class = "footer-radio-container_playing">
-    <Ticker duration={450}>
+    <Ticker duration={50}>
       <!-- repeat so anim always kicks off  -->
-      {#each Array(100) as _, i}
+      {#each Array(10) as _, i}
         <div class = "footer-radio-container_playing_title">
           <span>Playing Now:</span> {title}
         </div>
@@ -70,7 +70,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: $teal;
+      color: $lime;
       @include type-serif-lg;
       font-style: italic;
     }
@@ -102,7 +102,7 @@
       border: solid white 1px;
       background: black;
       color: white;
-      border-radius: 20px 20px;
+      border-radius: 25px 25px;
       margin-right: calc(#{$padding} / 2);
       display: flex;
       align-items: center;
@@ -123,7 +123,7 @@
       align-self: flex-end;
       overflow: scroll;
       border: solid white 1px;
-      border-radius: 20px 20px;
+      border-radius: 25px 25px;
       color: white;
       background: black;
       // margin-right: $padding;
@@ -131,28 +131,12 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      @include type-sans-md;
+      @include type-sans-lg;
+      height: 100%;
+      text-transform: uppercase;
       &:hover {
         background: white;
         color: black;
-      }
-      &.closed {
-        height: 100%;
-        text-transform: uppercase;
-      }
-      &.open {
-        height: 400px;
-        width: 30%;
-        position: fixed;
-        // this needs to be variable
-        // + will need to account for padding-right of it/by chatbox
-        margin-right: $chatWidth;
-        right: calc(#{$padding} / 2);
-        padding: .25rem;
-        display: inline-block;
-      }
-      &_entry {
-        margin-bottom: 1rem;
       }
     }
     & audio {

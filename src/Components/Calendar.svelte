@@ -146,7 +146,7 @@ function handleLinkClick(loc) {
       }
       &_title {
         @include type-sans-lg;
-        color: $teal;
+        color: $lime;
         &.live {
           color: white;
         }

@@ -516,9 +516,9 @@ onMount(() => {
 		position: fixed;
 		z-index: 4;
 		background: black;
-		padding: .75rem;
+		padding: .5rem;
 		border: solid white 1px;
-		border-radius: 15px 15px;
+		border-radius: 10px 10px;
 		color: white;
 		text-transform: capitalize;
 		@include type-serif-md;
