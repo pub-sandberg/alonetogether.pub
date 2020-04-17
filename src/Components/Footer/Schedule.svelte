@@ -73,6 +73,13 @@
         color: $lime;
       }
     }
+    @include bp-xs {
+      width: 75vw;
+      top: $menuHeight;
+      left: 0;
+      margin: 1rem 0 0 1rem;
+      height: 65vh;
+    }
   }
 
 </style>

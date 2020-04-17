@@ -3,6 +3,9 @@
   import moment from 'moment'
   import Radio from './Footer/Radio.svelte'
   import Chat from './Footer/Chat.svelte'
+  import { isMobile } from '../store.js'
+  console.log('mobile?', isMobile)
+
   
   const spreadsheetId = process.env.GOOGLE_SPREADSHEET_ID
   const spreadsheetKey = process.env.GOOGLE_SPREADSHEET_KEY
@@ -56,9 +59,11 @@
         {/if}
     {/await}
   {/if}
-  <div class = "footer-chat-container">
-    <Chat />
-  </div>
+  {#if !$isMobile}
+    <div class = "footer-chat-container">
+      <Chat />
+    </div>
+  {/if}
 </div>
 
 <style lang="scss" global>
@@ -84,5 +89,8 @@
     // set in embed
     width: 250px;
     display: inline-flex;
+    @include bp-xs {
+      display: none;
+    }
   }
 </style>

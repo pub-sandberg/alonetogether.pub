@@ -4,11 +4,7 @@
 
 <div class = "information-container">
   <div>
-    <p>Alone Together is an platform initiave by PUB Sandberg.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et orci eu nibh sodales semper vitae non eros. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent venenatis pellentesque diam non feugiat.</p> 
-    <p>Aenean et mauris ut urna posuere viverra. Etiam lorem eros, congue a sollicitudin et, condimentum et magna. Praesent porttitor sapien sed dolor interdum laoreet quis ut ante. Curabitur pretium finibus accumsan. Ut non dolor vitae magna aliquam suscipit sed at nisi.</p>
-    <p>Nunc dapibus varius odio, quis sagittis est vestibulum nec. Donec dapibus risus sit amet orci pretium hendrerit. Vivamus neque eros, accumsan quis quam in, tempor rhoncus nunc. Aenean aliquam justo non libero bibendum sollicitudin. Phasellus aliquet dolor vel venenatis eleifend. 
-    <p>Pellentesque vestibulum imperdiet tortor, nec vehicula erat cursus a. Maecenas viverra, mi quis malesuada maximus, sem turpis mollis sapien, vitae consectetur nisi diam a leo. In nec ligula non leo dapibus mattis vel nec erat.</p>
+    <p>Alone Together is an platform initiative by <a href="http://pub.sandberg.nl/" target="_blank">PUB Sandberg</a>. A way to communicate and share during times of isolation. We think we can question our ways of production while we are in quarantine and we are willing to share ways of doing that can make us feel each other, beyond the screen, or melting its surface, just like a bright, silvery mist.</p>
   </div>
 </div>
 
@@ -26,6 +22,10 @@
     padding-bottom: calc(#{$footerHeight} * 2);
     & p {
       margin-bottom: 1rem;
+      & a {
+        text-decoration: none;
+        color: $lime;
+      }
     }
   }
 

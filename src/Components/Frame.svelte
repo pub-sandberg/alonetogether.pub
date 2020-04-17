@@ -22,6 +22,7 @@
   })
 
   function handleClick(event) {
+    console.log($fullScreen)
     $fullScreen ? fullScreen.set(false) : fullScreen.set(true)
   }
   

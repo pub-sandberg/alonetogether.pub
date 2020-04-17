@@ -45,6 +45,9 @@
       align-items: center;
       border-radius: 10px 10px;
       margin-right: $padding;
+      @include bp-xs {
+        margin-left: $padding;
+      }
       & a {
         color: white;
         text-decoration: none;
@@ -69,6 +72,9 @@
       display: flex;
       align-items: center;
       // align-self: flex-end;
+      @include bp-xs {
+        display: none;
+      }
       & a {
         color: white;
         text-decoration: none;

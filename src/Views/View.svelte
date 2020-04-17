@@ -33,8 +33,10 @@
     border-top: 0;
     border-bottom: 0;
     overflow-y: scroll;
-    // transition: width .5s ease;
-    // padding-bottom: $menuHeight;
+    @include bp-xs {
+      width: 0; 
+      border: none;
+    }
     &.fullwidth {
       width: calc(100% - 2rem);
     }

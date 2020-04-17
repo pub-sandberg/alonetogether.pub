@@ -491,6 +491,9 @@
 			justify-content: center;
 			padding: .5rem .5rem $menuHeight .5rem;
 			width: 33.3%;
+			@include bp-xs {
+				width: 100%;
+			}
 		}
 		&.closed {
 			width: 2rem;
@@ -516,6 +519,9 @@
 					&.active {
 						animation: none;
 					}
+					@include bp-xs {
+      			pointer-events: none !important;
+    			}
 			 }
 		}
   }

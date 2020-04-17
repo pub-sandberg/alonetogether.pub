@@ -54,6 +54,7 @@ function handleLinkClick(loc) {
     {#await data}
       <div>Loading</div>
       {:then items}
+      <div class = "calendar-container_title">EVENT CALENDAR</div>
       {#each items as item}
           {#if moment(item.start.dateTime).isAfter(quarantineStart, 'day') && item.start.dateTime !== undefined}
             {#if item.location !== undefined}
@@ -120,6 +121,15 @@ function handleLinkClick(loc) {
     flex-flow: column;
     &::-webkit-scrollbar {
       display: none;
+    }
+    &_title {
+      color: black;
+      background: white;
+      @include type-sans-lg;
+      border: solid white 1px;
+      border-radius: 25px 25px;
+      padding: .5rem;
+      margin-bottom: calc(#{$padding} / 2);
     }
     &_entry {
       margin-bottom: calc(#{$padding} / 2);

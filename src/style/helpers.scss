@@ -22,29 +22,34 @@ $chatWidth: 350px;
   // will be baskerville
   font-family: 'Libre Baskerville', serif;
   font-size: .75rem; 
+  line-height: 1.15;
 }
 
 @mixin type-serif-md {
   // will be baskerville
   font-family: 'Libre Baskerville', serif;
+  line-height: 1.15;
   font-size: 1rem; 
 }
 
 @mixin type-serif-lg {
   // will be baskerville
   font-family: 'Libre Baskerville', serif;
+  line-height: 1.15;
   font-size: 1.5rem; 
 }
 
 @mixin type-sans-sm {
   font-family: 'Miguelito', 'Helvetica', 'Arial', serif;
   font-size: .75rem; 
+  line-height: 1.15;
   letter-spacing: -.025em;
 }
 
 @mixin type-sans-md {
   font-family: 'Miguelito', 'Helvetica', 'Arial', serif;
   font-size: 1rem; 
+  line-height: 1.15;
   letter-spacing: -.025em;
 }
 
@@ -52,6 +57,49 @@ $chatWidth: 350px;
   font-family: 'Miguelito', 'Helvetica', 'Arial', serif;
   font-size: 1.5rem; 
   letter-spacing: -.025em;
+  line-height: 1.15;
+}
+
+// mobile
+@mixin bp-xs {
+  @media (min-width: 0) and (max-width: 576px) {
+    @content;
+  }
+}
+
+// tablet
+@mixin bp-sm {
+  @media (min-width: 577px) and (max-width: 875px) {
+    @content;
+  }
+}
+
+// laptop
+@mixin bp-md {
+  @media (min-width: 876px) and (max-width: 1290px) {
+    @content;
+  }
+}
+
+// desktop
+@mixin bp-lg {
+  @media (min-width: 1291px) and (max-width: 1440px) {
+    @content;
+  }
+}
+
+// large desktop
+@mixin bp-xl {
+  @media (min-width: 1441px) and (max-width: 1800px) {
+    @content;
+  }
+}
+
+// xxl
+@mixin bp-xxl {
+  @media (min-width: 1801px) {
+    @content;
+  }
 }
 
 @keyframes live {

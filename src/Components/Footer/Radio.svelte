@@ -74,6 +74,10 @@
     border-top: 0;
     border-left: 0;
     border-bottom: 0;
+    @include bp-xs {
+      width: 100%;
+      border: none;
+    }
     &_logo {
       width: 15%;
       // border: solid black 1px;
@@ -85,6 +89,9 @@
       color: $lime;
       @include type-serif-lg;
       font-style: italic;
+      @include bp-xs {
+        display: none;
+      }
     }
     &_message {
       color: white;
@@ -136,7 +143,13 @@
         & span {
           @include type-serif-lg;
           color: $lime;
+          @include bp-xs {
+            @include type-serif-md;
+          }
         }
+      }
+      @include bp-xs {
+        @include type-sans-md;
       }
     }
     &_schedule {
@@ -156,6 +169,10 @@
       @include type-sans-lg;
       height: 100%;
       text-transform: uppercase;
+      @include bp-xs {
+        width: 25%;
+        @include type-sans-sm;
+      }
       &:hover {
         background: white;
         color: black;
