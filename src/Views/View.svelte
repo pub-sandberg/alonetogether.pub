@@ -11,8 +11,8 @@
     <Route path="canteen" component="{Frame}" name="canteen" url="https://saschakrischock.com/atomchat" />
     <Route path="library" component="{Frame}" name="library" url="https://www.are.na/pub/library-2uw05wda6ro" />
     <Route path="cinema" component="{Frame}" name="cinema" />
-    <Route path="information" name="information" component="{Frame}" />
-    <Route path="archive" name="archive" component="{Frame}" />
+    <Route path="information-desk" name="information-desk" component="{Frame}" />
+    <Route path="radio-archive" name="radio-archive" component="{Frame}" />
     <Route path="guestbook" name="guestbook" component="{Frame}" />
     <Route path="/" name="home" component="{Frame}" />
   </Router>

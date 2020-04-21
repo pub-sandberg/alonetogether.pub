@@ -10,11 +10,6 @@
   function handleClose() {
     isOpen = false
   }
-  
-  // function returnClass() {
-  //   let className = isOpen ? "footer-radio-container_schedule open" : "footer-radio-container_schedule closed"
-  //   return className
-  // }
 
 </script>
 

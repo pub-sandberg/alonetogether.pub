@@ -4,8 +4,6 @@
   import Radio from './Footer/Radio.svelte'
   import Chat from './Footer/Chat.svelte'
   import { isMobile } from '../store.js'
-  console.log('mobile?', isMobile)
-
   
   const spreadsheetId = process.env.GOOGLE_SPREADSHEET_ID
   const spreadsheetKey = process.env.GOOGLE_SPREADSHEET_KEY

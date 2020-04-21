@@ -3,9 +3,11 @@
   import { afterUpdate } from 'svelte';
 
   import Calendar from './Calendar.svelte';
-  import Information from './Information.svelte';
+  import InformationDesk from './InformationDesk.svelte';
   import Feed from './Feed.svelte';
+  import RadioArchive from './RadioArchive.svelte';
   import { fullScreen } from '../store.js'
+  import Loader from './Global/Loader.svelte'
 
   // export prop
   export let url
@@ -30,11 +32,12 @@
 
 {#if url}
   {#if !loaded}
-    <div class = "loader">
+    <Loader name={name} />
+    <!-- <div class = "loader">
       <div class = "loader_inner">
         <span>Loading {name}</span>
       </div>
-    </div>
+    </div> -->
   {/if}
   {#if loaded}
     {#if !$fullScreen}
@@ -43,8 +46,10 @@
   {/if}
   <iframe class = '{loaded ? "frame" : "frame hidden"}' id = "site" src = '{url}'></iframe>
 {:else}
-  {#if name === 'information'}
-    <Information />
+  {#if name === 'information-desk'}
+    <InformationDesk />
+  {:else if name === 'radio-archive'}
+    <RadioArchive />
   {:else if name === 'home'}
     <Calendar />
     <Feed />
@@ -76,27 +81,27 @@
     }
   }
 
-  .loader {
-    position: absolute;
-    width: 66.6%;
-    text-align: center;
-    text-transform: uppercase;
-    background: black;
-    color: white;
-    top: 50%;
-    transform: translateY(-50%);
-    margin-top: -#{$menuHeight};
-    &_inner {
-      display: inline-block;
-      padding: .75rem;
-      border: solid white 1px;
-      border-radius: 20px 20px;
-      @include type-sans-lg;
-      & span {
-        animation: live .5s linear infinite;
-      }
-    }
-  }
+  // .loader {
+  //   position: absolute;
+  //   width: 66.6%;
+  //   text-align: center;
+  //   text-transform: uppercase;
+  //   background: black;
+  //   color: white;
+  //   top: 50%;
+  //   transform: translateY(-50%);
+  //   margin-top: -#{$menuHeight};
+  //   &_inner {
+  //     display: inline-block;
+  //     padding: .75rem;
+  //     border: solid white 1px;
+  //     border-radius: 20px 20px;
+  //     @include type-sans-lg;
+  //     & span {
+  //       animation: live .5s linear infinite;
+  //     }
+  //   }
+  // }
 
   .coming-soon {
     position: absolute;

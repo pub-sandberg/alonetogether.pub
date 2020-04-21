@@ -11,7 +11,7 @@
   </div>
   <div class = "menu_link">
     <Router>
-      <Link to="/information">INFORMATION DESK</Link>
+      <Link to="/information-desk">INFORMATION DESK</Link>
     </Router>
   </div>
 </nav>
