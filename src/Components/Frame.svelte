@@ -6,7 +6,7 @@
   import InformationDesk from './InformationDesk.svelte';
   import Feed from './Feed.svelte';
   import RadioArchive from './RadioArchive.svelte';
-  import { fullScreen } from '../store.js'
+  import { fullScreen, isCinema } from '../store.js'
   import Loader from './Global/Loader.svelte'
 
   // export prop
@@ -23,6 +23,11 @@
     }
   })
 
+  // may be better to do onmount/destroy instead
+  afterUpdate(() => {
+    name === 'cinema' ? isCinema.set(true) : isCinema.set(false)
+  })
+
   function handleClick(event) {
     console.log($fullScreen)
     $fullScreen ? fullScreen.set(false) : fullScreen.set(true)
@@ -33,11 +38,6 @@
 {#if url}
   {#if !loaded}
     <Loader name={name} />
-    <!-- <div class = "loader">
-      <div class = "loader_inner">
-        <span>Loading {name}</span>
-      </div>
-    </div> -->
   {/if}
   {#if loaded}
     {#if !$fullScreen}

@@ -3,7 +3,7 @@
   import moment from 'moment'
   import Radio from './Footer/Radio.svelte'
   import Chat from './Footer/Chat.svelte'
-  import { isMobile } from '../store.js'
+  import { isMobile, isCinema } from '../store.js'
   
   const spreadsheetId = process.env.GOOGLE_SPREADSHEET_ID
   const spreadsheetKey = process.env.GOOGLE_SPREADSHEET_KEY
@@ -40,28 +40,33 @@
 
 
 <div class = "footer">
-  {#if data === undefined}
-    <div>Loading...</div>
-  {:else}
-    {#await data}
-      <div>Loading</div>
-      {:then items}
-        {#if (isToday(items[0].values[0][0]))}
-          <Radio today={true} future{false} title={items[0].values[0][1]} scheduleData={items[1]} date={items[0].values[0][0]} />
-        {:else}
-          {#if (isFuture(items[0].values[0][0]))}
-            <Radio today={false} future={true} date={items[0].values[0][0]} />
+  <!-- {#if $isCinema} -->
+    <!-- <div>Cinema footer</div> -->
+    <!-- <Chat type='cinema' /> -->
+  <!-- {:else} -->
+    {#if data === undefined}
+      <div>Loading...</div>
+    {:else}
+      {#await data}
+        <div>Loading</div>
+        {:then items}
+          {#if (isToday(items[0].values[0][0]))}
+            <Radio today={true} future{false} title={items[0].values[0][1]} scheduleData={items[1]} date={items[0].values[0][0]} />
           {:else}
-            <Radio today={false} future={false} date={items[0].values[0][0]} />
+            {#if (isFuture(items[0].values[0][0]))}
+              <Radio today={false} future={true} date={items[0].values[0][0]} />
+            {:else}
+              <Radio today={false} future={false} date={items[0].values[0][0]} />
+            {/if}
           {/if}
-        {/if}
-    {/await}
-  {/if}
-  {#if !$isMobile}
-    <div class = "footer-chat-container">
-      <Chat />
-    </div>
-  {/if}
+      {/await}
+    {/if}
+    {#if !$isMobile}
+      <div class = "footer-chat-container">
+        <Chat type='radio' />
+      </div>
+    {/if}
+  <!-- {/if} -->
 </div>
 
 <style lang="scss" global>
