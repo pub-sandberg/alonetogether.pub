@@ -4,7 +4,9 @@
 
 <div class = "information-container">
   <div>
-    <p>Alone Together is an platform initiative by <a href="http://pub.sandberg.nl/" target="_blank">PUB Sandberg</a>. A way to communicate and share during times of isolation. We think we can question our ways of production while we are in quarantine and we are willing to share ways of doing that can make us feel each other, beyond the screen, or melting its surface, just like a bright, silvery mist.</p>
+    <p><a href="http://pub.sandberg.nl/" target="_blank">PUB Sandberg</a> initiated an online platform that serves as a channel for the Sandberg community to share and communicate during times of isolation.</p>
+    <p>While separated, we want to feel each other, beyond the screen or melting its surface to bring us closer, just like a bright, silvery mist. Chatting in the cantine, reading sessions in the library, radio streamings for withdrawal, and monologues for learning about togetherness will happen.</p>
+    <p>For more info, email us at <a href = "mailto:pub.sandberg@gmail.com">pub.sandberg@gmail.com</a></p>
   </div>
 </div>
 
