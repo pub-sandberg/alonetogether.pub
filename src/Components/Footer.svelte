@@ -3,6 +3,8 @@
   import moment from 'moment'
   import Radio from './Footer/Radio.svelte'
   import Chat from './Footer/Chat.svelte'
+  import { onMount } from 'svelte';
+
   import { isMobile, isCinema } from '../store.js'
   
   const spreadsheetId = process.env.GOOGLE_SPREADSHEET_ID
@@ -63,6 +65,9 @@
     {/if}
     {#if !$isMobile}
       <div class = "footer-chat-container">
+        {#if data !== undefined}
+          <div class = "footer-chat-container_label">CHAT</div>
+        {/if}
         <Chat type='radio' />
       </div>
     {/if}
@@ -71,6 +76,7 @@
 
 <style lang="scss" global>
   @import "./style/global.scss";
+  @import "./style/helpers.scss";
 
   .footer {
     position: fixed;
@@ -90,8 +96,23 @@
 
   .footer-chat-container {
     // set in embed
-    width: 250px;
-    display: inline-flex;
+    width: $chatWidth;
+    display: flex;
+    height: 100%;
+    &_label {
+      height: 20px;
+      border: solid white 1px;
+      border-right: 0;
+      border-top: 0;
+      border-left: 0;
+      display: flex;
+      align-items: center;
+      padding-left: calc(#{$padding} / 2);
+      width: 100%;
+      background: black;
+      @include type-sans-sm;
+      color: $lime;
+    }
     @include bp-xs {
       display: none;
     }

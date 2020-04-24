@@ -50,6 +50,14 @@
 				currentLabel = ''
 				showLabel = false
 				isHovered = false
+				dots.forEach((dot, key) => {
+					dot.classList.remove('inactive')
+					dot.classList.add('active')
+					setTimeout(() => {
+						dot.classList.remove('active')
+						dot.classList.add('inactive')
+					}, 100)
+				})
 			})
 		})
 	}
@@ -74,7 +82,7 @@
 		.st5{fill:#8ECFBA;}
 		.st6{fill:#8ECFBA;}
 	</style>
-	<circle id="home" class="st0" cx="238.1" cy="832.1" r="14"/>
+	<circle id="home" class="st0 inactive" cx="238.1" cy="832.1" r="14"/>
 	<g id="land">
 		<path class="st1" d="M436.3,613.6c3.3,0.7,1.7,3,2.5,5c2.5,6.2-1.8,6.7-2.5,8.7c-1.2,3.6,2.5,7.4,1.2,13.6c-1.5,7.3,4,6.2,7.4,7.4
 			c2.4,0.9,3.7,9.5-1.2,16.1c-3.7,5-1.2,13.6-6.2,17.3c-5,3.7-7.4,1.2-7.4,6.2c0,4.6,3.7,11.5,3.7,16.1c0,8.7-8.7,8.7-8.7,17.3
@@ -466,12 +474,12 @@
 	<circle on:click={() => handlePointClick('library')} id="library" class="st4" cx="21.2" cy="677.5" r="23.9"/>
 	<circle on:click={() => handlePointClick('cinema')} id="cinema" class="st5" cx="66.6" cy="434.8" r="14"/> -->
 
-	<circle id="information desk" class="st3" cx="244.5" cy="553" r="23.9"/>
-	<circle id="canteen" class="st3" cx="-59" cy="1038.3" r="12.3"/>
-	<circle id="guestbook" class="st4" cx="413.3" cy="1097.8" r="23.9"/>
-	<circle id="library" class="st4" cx="21.2" cy="677.5" r="23.9"/>
-	<circle id="cinema" class="st5" cx="66.6" cy="434.8" r="14"/>
-	<circle id="radio archive" class="st6" cx="40.5" cy="900" r="18"/>
+	<circle id="information desk" class="st3 inactive" cx="244.5" cy="553" r="23.9"/>
+	<circle id="canteen" class="st3 inactive" cx="-59" cy="1038.3" r="12.3"/>
+	<circle id="guestbook" class="st4 inactive" cx="413.3" cy="1097.8" r="23.9"/>
+	<circle id="library" class="st4 inactive" cx="21.2" cy="677.5" r="23.9"/>
+	<circle id="cinema" class="st5 inactive" cx="66.6" cy="434.8" r="14"/>
+	<circle id="radio archive" class="st6 inactive" cx="40.5" cy="900" r="18"/>
 
 	</svg>
 
@@ -517,7 +525,9 @@
   		 width: auto !important;
 			 & circle {
 				 cursor: pointer;
-					animation: live .75s linear infinite;
+				 	&.inactive {
+						 animation: live 1s linear infinite;
+					 }
 					&.active {
 						animation: none;
 					}

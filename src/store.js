@@ -4,3 +4,4 @@ import { writable } from 'svelte/store'
 export const fullScreen = writable(false)
 export const isMobile = writable(false)
 export const isCinema = writable(false)
+export const hasEntered = writable(false)

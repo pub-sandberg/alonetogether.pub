@@ -23,7 +23,8 @@
 
 <div class = "footer-radio-container">
   <div class = "footer-radio-container_logo">
-    PUB Radio
+    <!-- PUB Radio -->
+    <img src = 'images/logo-2.svg' alt="Alone Together Radio" />
   </div>
   {#if today}
     <div class = "footer-radio-container_audio-btn" on:click={handleClick}>
@@ -91,6 +92,10 @@
       font-style: italic;
       @include bp-xs {
         display: none;
+      }
+      & img {
+        max-width: 95%;
+        max-height: 95%;
       }
     }
     &_message {
