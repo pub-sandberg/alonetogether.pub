@@ -12,11 +12,14 @@
 
   function handleClick() {
     if (isPlaying) {
-      document.getElementById('audioEl').muted = true
+      // muted...?
+      document.getElementById('audioEl').pause()
+      // document.getElementById('audioEl').muted = false
       isPlaying = false
     }
     else {
-      document.getElementById('audioEl').muted = false
+      document.getElementById('audioEl').play()
+      // document.getElementById('audioEl').muted = true
       isPlaying = true
     }
   }

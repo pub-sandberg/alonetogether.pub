@@ -1,9 +1,13 @@
 <script>
   import axios from 'axios'
-  import moment from 'moment'
+  // import moment from 'moment'
+  import moment from 'moment-timezone'
+  // import 'moment-timezone';
   import Radio from './Footer/Radio.svelte'
   import Chat from './Footer/Chat.svelte'
   import { onMount } from 'svelte';
+
+  moment.tz.setDefault("Europe/Amsterdam");
 
   import { isMobile, isCinema } from '../store.js'
   
@@ -41,12 +45,6 @@
 
     return current.isBetween(startTime, endTime)
   }
-
-  // function isFuture(str) {
-  //   let dateString = str
-  //   let date = moment(dateString, 'DD-MM-YYYY')
-  //   return moment(date).isAfter(moment(), 'day')
-  // }
 
   function isFuture(data) {
     let dateString = data[0] 

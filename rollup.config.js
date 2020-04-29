@@ -6,6 +6,7 @@ import { terser } from 'rollup-plugin-terser';
 import sveltePreprocess from "svelte-preprocess";
 import { config } from 'dotenv';
 import replace from '@rollup/plugin-replace';
+import json from "@rollup/plugin-json";
 
 
 const production = !process.env.ROLLUP_WATCH;
@@ -68,7 +69,8 @@ export default {
 
     // If we're building for production (npm run build
     // instead of npm run dev), minify
-    production && terser()
+    production && terser(),
+    json()
   ],
   watch: {
     clearScreen: false

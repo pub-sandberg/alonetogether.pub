@@ -1,9 +1,13 @@
 <script>
 import axios from 'axios'
-import moment from 'moment'
+// import moment from 'moment'
+import moment from 'moment-timezone'
 import { navigate } from "svelte-routing"
 const calendarId = process.env.GOOGLE_CALENDAR_ID
 const calendarKey = process.env.GOOGLE_CALENDAR_KEY
+
+moment.tz.setDefault("Europe/Amsterdam");
+
 
 var reqUrl = 'https://www.googleapis.com/calendar/v3/calendars/' + calendarId + '/events?key=' + calendarKey
 let quarantineStart = '2020-03-15'
