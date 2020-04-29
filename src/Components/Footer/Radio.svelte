@@ -12,11 +12,11 @@
 
   function handleClick() {
     if (isPlaying) {
-      document.getElementById('audioEl').pause()
+      document.getElementById('audioEl').muted = true
       isPlaying = false
     }
     else {
-      document.getElementById('audioEl').play()
+      document.getElementById('audioEl').muted = false
       isPlaying = true
     }
   }
