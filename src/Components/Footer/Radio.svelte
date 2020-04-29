@@ -1,10 +1,12 @@
 <script>
+  import moment from 'moment'
   import Schedule from './Schedule.svelte'
   import Ticker from 'svelte-ticker';
   export let title
-  export let today
+  export let now
   export let future
   export let date
+  export let time
   export let scheduleData
   let isPlaying = false 
 
@@ -19,6 +21,22 @@
     }
   }
 
+  function returnFutureDate(str) {
+    let current = moment()
+    let date = moment(str, 'DD-MM-YYYY')
+    if (date.diff(current, 'days') === 0) {
+      if (date.isSame(current, 'day')) {
+        return 'TODAY'
+      }
+      else {
+        return 'TOMORROW'
+      }
+    }
+    else {
+      return 'ON' + ' ' + date.format('DD/MM/YYYY')
+    }
+  }
+
 </script>
 
 <div class = "footer-radio-container">
@@ -26,7 +44,7 @@
     <!-- PUB Radio -->
     <img src = 'images/logo-2.svg' alt="Alone Together Radio" />
   </div>
-  {#if today}
+  {#if now}
     <div class = "footer-radio-container_audio-btn" on:click={handleClick}>
       {#if isPlaying}
         <!-- PAUSE -->
@@ -50,9 +68,9 @@
     <Schedule scheduleData={scheduleData} />
   {:else}
     {#if future}
-      <div class = "footer-radio-container_message">NO RADIO TODAY &#x1F61E;NEXT SHOW WILL BE ON {date} &#x1F603</div>
+      <div class = "footer-radio-container_message">NO RADIO RIGHT NOW &#x1F61E;NEXT SHOW WILL BE {returnFutureDate(date)} AT {time} &#x1F4E1;</div>
     {:else}
-      <div class = "footer-radio-container_message">NO RADIO TODAY &#x1F61E;</div>
+      <div class = "footer-radio-container_message">NO RADIO RIGHT NOW &#x1F61E;</div>
     {/if}
   {/if}
 

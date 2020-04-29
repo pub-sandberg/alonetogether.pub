@@ -10,7 +10,7 @@
   const spreadsheetId = process.env.GOOGLE_SPREADSHEET_ID
   const spreadsheetKey = process.env.GOOGLE_SPREADSHEET_KEY
 
-  const reqUrl = 'https://sheets.googleapis.com/v4/spreadsheets/' + spreadsheetId + '/values:batchGet?ranges=Sheet1!A2:B2&ranges=Sheet1!A5:E100&key=' + spreadsheetKey
+  const reqUrl = 'https://sheets.googleapis.com/v4/spreadsheets/' + spreadsheetId + '/values:batchGet?ranges=Sheet1!A2:D2&ranges=Sheet1!A5:E100&key=' + spreadsheetKey
   let data
 
   async function getData() {
@@ -26,16 +26,34 @@
   // init
   getData()
 
-  function isToday(str) {
-    let dateString = str
-    let date = moment(dateString, 'DD-MM-YYYY')
-    return moment(date).isSame(moment(), 'day')
+  const format = 'DD-MM-YYYY hh:mm:ss'   
+
+  function isNow(data) {
+    // set timezone
+    let dateString = data[0]
+    let today = moment(dateString, 'DD-MM-YYYY')
+    let tomorrow = moment(today).add(1, 'days')
+
+    let current = moment()
+    let startTime = moment(dateString + ' ' + data[2], format)
+    let end = data[3] !== undefined ? moment(dateString + ' ' + data[3], format) : startTime.add(8, 'hours')
+    let endTime = startTime.isAfter(end) ? end.add(1, 'days') : end
+
+    return current.isBetween(startTime, endTime)
   }
 
-  function isFuture(str) {
-    let dateString = str
+  // function isFuture(str) {
+  //   let dateString = str
+  //   let date = moment(dateString, 'DD-MM-YYYY')
+  //   return moment(date).isAfter(moment(), 'day')
+  // }
+
+  function isFuture(data) {
+    let dateString = data[0] 
     let date = moment(dateString, 'DD-MM-YYYY')
-    return moment(date).isAfter(moment(), 'day')
+    let current = moment()
+    let startTime = moment(dateString + ' ' + data[2], format)
+    return moment(startTime).isAfter(current)
   }
 
 </script>
@@ -52,13 +70,14 @@
       {#await data}
         <div>Loading</div>
         {:then items}
-          {#if (isToday(items[0].values[0][0]))}
-            <Radio today={true} future{false} title={items[0].values[0][1]} scheduleData={items[1]} date={items[0].values[0][0]} />
+          <!-- {#if (isToday(items[0].values[0][0], items))} -->
+          {#if (isNow(items[0].values[0]))}
+            <Radio now={true} future{false} title={items[0].values[0][1]} scheduleData={items[1]} date={items[0].values[0][0]} />
           {:else}
-            {#if (isFuture(items[0].values[0][0]))}
-              <Radio today={false} future={true} date={items[0].values[0][0]} />
+            {#if (isFuture(items[0].values[0]))}
+              <Radio now={false} future={true} date={items[0].values[0][0]} time={items[0].values[0][2]} />
             {:else}
-              <Radio today={false} future={false} date={items[0].values[0][0]} />
+              <Radio now={false} future={false} date={items[0].values[0][0]} time={items[0].values[0][2]} />
             {/if}
           {/if}
       {/await}
