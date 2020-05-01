@@ -10,6 +10,8 @@
   moment.tz.setDefault("Europe/Amsterdam");
 
   import { isMobile, isCinema } from '../store.js'
+
+  console.log('is mobile?', $isMobile)
   
   const spreadsheetId = process.env.GOOGLE_SPREADSHEET_ID
   const spreadsheetKey = process.env.GOOGLE_SPREADSHEET_KEY

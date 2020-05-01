@@ -7,15 +7,19 @@
 	import { isMobile, hasEntered } from "./store.js";
 
 	function checkWindow(x) {
+		console.log(x)
 		x <= 576 ? isMobile.set(true) : isMobile.set(false)
 	}
+	
+	// don't wait for mount
+	checkWindow(window.innerWidth)
+
 
 	let resizeTimer
 	onMount(() => {
 		setTimeout(() => {
 			hasEntered.set(true)
 		}, 3500)
-		checkWindow(window.innerWidth)
 		window.addEventListener('resize', (event) => {
 			clearTimeout(resizeTimer);
 			resizeTimer = setTimeout(function () {

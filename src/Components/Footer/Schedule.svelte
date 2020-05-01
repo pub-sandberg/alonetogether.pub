@@ -17,11 +17,13 @@
 <div class = "radio-schedule-box">
   <div class = "radio-schedule-box_close" on:click={handleClose}>CLOSE</div>
   {#each schedule as entry}
+    {#if entry[2] !== undefined}
     <div class = "radio-schedule-box_entry">
       <div class = "radio-schedule-box_entry_time">{entry[0]}</div>
       <div class = "radio-schedule-box_entry_title">{entry[2]}</div>
       <div class = "radio-schedule-box_entry_title">w/ {entry[3]}</div>
     </div>
+    {/if}
   {/each}
 </div>
 {/if}

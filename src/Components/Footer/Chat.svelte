@@ -4,7 +4,7 @@
 </script>
 <svelte:head>
   {#if type === 'cinema'}
-    <div>Another Chat iframe here</div>
+    <!-- <div>Another Chat iframe here</div> -->
   {:else}
     <!-- height (74) is 1px less than $footerHeights -->
     <script id="cid0020000247979030978" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 400px;height: 450px;">{"handle":"alonetogetherradio","arch":"js","styles":{"a":"000000","b":100,"c":"FFFFFF","d":"FFFFFF","e":"000000","g":"ffffff","h":"000000","j":"ffffff","k":"ffffff","l":"000000","m":"000000","n":"FFFFFF","p":"12.42","q":"ffffff","r":100,"t":0,"usricon":0,"pos":"br","cv":1,"cvfnt":"Baskerville, 'Baskerville Old Face', 'Hoefler Text', Garamond, 'Times New Roman', serif, sans-serif","cvfntsz":"16px","cvfntw":"lighter","cvbg":"000000","cvw":350,"cvh":54,"sbc":"ffffff","surl":0,"allowpm":0,"cnrs":"0.66","ticker":1,"fwtickm":1}}</script>

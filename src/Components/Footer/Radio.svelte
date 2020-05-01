@@ -9,17 +9,24 @@
   export let time
   export let scheduleData
   let isPlaying = false 
+  let playPressed = false
 
   function handleClick() {
     if (isPlaying) {
       // muted...?
-      document.getElementById('audioEl').pause()
-      // document.getElementById('audioEl').muted = false
+      // document.getElementById('audioEl').pause()
+      document.getElementById('audioEl').muted = true
       isPlaying = false
     }
     else {
-      document.getElementById('audioEl').play()
-      // document.getElementById('audioEl').muted = true
+      // document.getElementById('audioEl').play()
+      if (!playPressed) {
+        document.getElementById('audioEl').play()
+        playPressed = true
+      }
+      else {
+        document.getElementById('audioEl').muted = false
+      }
       isPlaying = true
     }
   }
@@ -58,9 +65,9 @@
       {/if}
     </div>
     <div class = "footer-radio-container_playing">
-      <Ticker duration={50}>
+      <Ticker duration={20}>
         <!-- repeat so anim always kicks off  -->
-        {#each Array(10) as _, i}
+        {#each Array(5) as _, i}
           <div class = "footer-radio-container_playing_title">
             <span>Playing Now:</span> {title}
           </div>
@@ -199,9 +206,11 @@
         width: 25%;
         @include type-sans-sm;
       }
-      &:hover {
-        background: white;
-        color: black;
+      @media (hover: hover) {
+        &:hover {
+          background: white;
+          color: black;
+        }
       }
     }
     & audio {

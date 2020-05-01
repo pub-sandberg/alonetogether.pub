@@ -151,7 +151,7 @@ function handleLinkClick(loc) {
       &_live {
         color: $lime;
         @include type-sans-lg;
-        animation: live .5s linear infinite;
+        animation: live 1s linear infinite;
       }
       &_date {
         @include type-serif-md;

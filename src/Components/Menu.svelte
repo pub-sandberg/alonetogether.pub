@@ -1,6 +1,12 @@
 <script>
   // export let url
   import { Router, Link, Route } from "svelte-routing";
+  import { isMobile } from '../store.js'
+
+  // w.i.p
+  function handleChatClick() {
+    console.log('show chat on mobile')
+  }
 </script>
 
 <nav class = {"menu"}>
@@ -10,9 +16,13 @@
     </Router>
   </div>
   <div class = "menu_link">
-    <Router>
-      <Link to="/information-desk">INFORMATION DESK</Link>
-    </Router>
+    {#if $isMobile}
+      <div class = "menu_link-chat" on:click={() => handleChatClick()}>CHAT</div>
+    {:else}
+      <Router>
+        <Link to="/information-desk">INFORMATION DESK</Link>
+      </Router>
+    {/if}
   </div>
 </nav>
 
@@ -52,10 +62,12 @@
         color: white;
         text-decoration: none;
       }
-      &:hover {
-        background: white;
-        & a {
-          color: black;
+      @media (hover: hover) {
+        &:hover {
+          background: white;
+          & a {
+            color: black;
+          }
         }
       }
     }
@@ -72,6 +84,8 @@
       display: flex;
       align-items: center;
       // align-self: flex-end;
+
+      // temp
       @include bp-xs {
         display: none;
       }
@@ -79,10 +93,12 @@
         color: white;
         text-decoration: none;
       }
-      &:hover {
-        background: white;
-        & a {
-          color: black;
+      @media (hover: hover) {
+        &:hover {
+          background: white;
+          & a {
+            color: black;
+          }
         }
       }
     }
