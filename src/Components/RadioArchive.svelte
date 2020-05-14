@@ -8,18 +8,13 @@
   const reqUrl = 'https://sheets.googleapis.com/v4/spreadsheets/' + spreadsheetId + '/values:batchGet?ranges=Sheet1!A2:D1000&key=' + spreadsheetKey
   let data
 
-  console.log('radio archive')
 
   async function getData() {
     try {
       let response = await axios.get(reqUrl);
       data = response.data.valueRanges[0].values
-      console.log('data', data)
-      console.log('...', data[0][0])
       data.sort((a, b) => moment(b[0], 'DD-MM-YYYY') - moment(a[0], 'DD-MM-YYYY'))
-      // SORT DATA IN ORDER
     } catch (error) {
-      // throw error
       data = []
     }
   }

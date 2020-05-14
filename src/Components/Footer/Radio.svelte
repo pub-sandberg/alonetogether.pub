@@ -65,7 +65,7 @@
       {/if}
     </div>
     <div class = "footer-radio-container_playing">
-      <Ticker duration={20}>
+      <Ticker duration={35}>
         <!-- repeat so anim always kicks off  -->
         {#each Array(5) as _, i}
           <div class = "footer-radio-container_playing_title">

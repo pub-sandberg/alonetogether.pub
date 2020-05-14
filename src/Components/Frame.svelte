@@ -6,6 +6,7 @@
   import InformationDesk from './InformationDesk.svelte';
   import Feed from './Feed.svelte';
   import RadioArchive from './RadioArchive.svelte';
+  import Library from './Library.svelte'
   import { fullScreen, isCinema } from '../store.js'
   import Loader from './Global/Loader.svelte'
 
@@ -50,6 +51,8 @@
     <InformationDesk />
   {:else if name === 'radio-archive'}
     <RadioArchive />
+  {:else if name === 'library'}
+    <Library />
   {:else if name === 'home'}
     <Calendar />
     <Feed />

@@ -9,7 +9,8 @@
 <div class = '{$fullScreen ? "view-container fullwidth" : "view-container"}'>
   <Router location={location}>
     <Route path="canteen" component="{Frame}" name="canteen" url="https://saschakrischock.com/atomchat" />
-    <Route path="library" component="{Frame}" name="library" url="https://www.are.na/pub/library-2uw05wda6ro" />
+    <!-- <Route path="library" component="{Frame}" name="library" url="https://www.are.na/pub/library-2uw05wda6ro" /> -->
+    <Route path="library" name="library" component="{Frame}" />
     <Route path="cinema" component="{Frame}" name="cinema" />
     <Route path="information-desk" name="information-desk" component="{Frame}" />
     <Route path="radio-archive" name="radio-archive" component="{Frame}" />
