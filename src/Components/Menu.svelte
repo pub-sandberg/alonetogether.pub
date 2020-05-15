@@ -35,13 +35,14 @@
     top: 0;
     width: 100%;
     height: $menuHeight;
-    background: black;
+    // background: black;
     border: solid white 1px;
     border-top: 0;
     border-right: 0;
     border-left: 0;
     display: flex;
     align-items: center;
+    z-index: 3;
     &_title {
       @include type-sans-md;
       color: white;

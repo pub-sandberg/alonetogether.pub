@@ -10,6 +10,7 @@
 html {
 	position: fixed;
 	overflow: hidden;
+	background: black;
 }
 
 html, body {
@@ -29,7 +30,7 @@ body {
 	box-sizing: border-box;
 	@include type-sans-md;
 	background: black;
-	// background-image: url('./images/background.jpg');
+	// background-image: url('/images/background.jpg');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;

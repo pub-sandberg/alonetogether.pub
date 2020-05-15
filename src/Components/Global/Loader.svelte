@@ -17,12 +17,13 @@
     width: 66.6%;
     text-align: center;
     text-transform: uppercase;
-    background: black;
+    // background: black;
     color: white;
     top: 50%;
     transform: translateY(-50%);
     margin-top: -#{$menuHeight};
     &_inner {
+      background: black;
       display: inline-block;
       padding: .75rem;
       border: solid white 1px;

@@ -51,7 +51,7 @@
     padding-bottom: calc(#{$footerHeight} * 2);
     &_entry {
       width: 65%;
-      background: black;
+      // background: black;
       border: solid white 1px;
       margin-bottom: calc(#{$padding} / 2);
       border-radius: 25px 25px;

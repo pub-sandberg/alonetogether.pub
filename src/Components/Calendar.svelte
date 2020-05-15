@@ -144,7 +144,7 @@ function handleLinkClick(loc) {
       // width: calc(100% - 2px);
       padding: .5rem;
       order: 2;
-      background: black;
+      // background: black;
       &:last-child {
         // margin-bottom: 1rem;
       }

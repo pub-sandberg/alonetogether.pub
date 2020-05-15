@@ -45,10 +45,29 @@
 	<View />
 	<Footer />
 </main>
+<div class = "background-image">
+	<img src = 'images/background.jpg'/>
+</div>
 
 <style lang="scss" global>
 
 @import "./style/global.scss";
+
+	.background-image {
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		// opacity: .;
+		& img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			opacity: .5;
+		}
+	}
 
 	.logo-wrap {
 		position: fixed;
@@ -76,6 +95,8 @@
 		height: 100%;
 		// background: yellow;
 		display: flex;
+		z-index: 3;
+		position: relative;
 		// padding: $padding;
 	}
 

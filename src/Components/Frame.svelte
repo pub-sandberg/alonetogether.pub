@@ -111,7 +111,7 @@
     width: 66.6%;
     text-align: center;
     text-transform: uppercase;
-    background: black;
+    // background: black;
     color: white;
     top: 50%;
     transform: translateY(-50%);

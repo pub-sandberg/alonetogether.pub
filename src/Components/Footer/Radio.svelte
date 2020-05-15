@@ -31,6 +31,10 @@
     }
   }
 
+  function handleRefreshClick() {
+    window.location.reload()
+  }
+
   function returnFutureDate(str) {
     let current = moment()
     let date = moment(str, 'DD-MM-YYYY')
@@ -78,7 +82,7 @@
     <Schedule scheduleData={scheduleData} />
   {:else}
     {#if future}
-      <div class = "footer-radio-container_message">NO RADIO RIGHT NOW &#x1F61E;NEXT SHOW WILL BE {returnFutureDate(date)} AT {time} &#x1F4E1;</div>
+      <div class = "footer-radio-container_message">NO RADIO RIGHT NOW &#x1F61E;NEXT SHOW WILL BE {returnFutureDate(date)} AT {time} &#x1F4E1;<br/><span class = "refresh" on:click={handleRefreshClick}>ALREADY {time}? TRY AGAIN</span></div>
     {:else}
       <div class = "footer-radio-container_message">NO RADIO RIGHT NOW &#x1F61E;</div>
     {/if}
@@ -135,13 +139,25 @@
       margin-left: 5%;
       padding: 0 1rem 0 1rem;
       text-align: center;
+      & span {
+        // color: red;
+        @include type-sans-sm;
+        &:hover {
+          cursor: pointer;
+          color: $lime;
+        }
+      }
+      @include bp-xs {
+        width: 100%;
+        margin-left: 0;
+      }
     }
     &_audio-btn {
       // width: 16.67%;
       width: $footerHeight;
       height: calc(#{$footerHeight} - .25rem);
       border: solid white 1px;
-      background: black;
+      // background: black;
       color: white;
       border-radius: 50% 50%;
       margin-right: calc(#{$padding} / 2);
@@ -162,7 +178,7 @@
     &_playing {
       width: calc(65% - (#{$footerHeight} / 2));
       border: solid white 1px;
-      background: black;
+      // background: black;
       color: white;
       border-radius: 25px 25px;
       margin-right: calc(#{$padding} / 2);
@@ -172,6 +188,7 @@
       overflow: hidden;
       @include type-sans-lg;
       &_title {
+        cursor: default;
         margin-right: 2rem;
         & span {
           @include type-serif-lg;
@@ -193,7 +210,7 @@
       border: solid white 1px;
       border-radius: 25px 25px;
       color: white;
-      background: black;
+      // background: black;
       // margin-right: $padding;
       display: flex;
       align-items: center;
