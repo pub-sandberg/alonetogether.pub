@@ -23,7 +23,7 @@
     transform: translateY(-50%);
     margin-top: -#{$menuHeight};
     &_inner {
-      background: black;
+      // background: black;
       display: inline-block;
       padding: .75rem;
       border: solid white 1px;
