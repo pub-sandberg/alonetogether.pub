@@ -56,6 +56,10 @@
     return moment(startTime).isAfter(current)
   }
 
+  function returnTime(time) {
+    return moment(time, "h:mm:ss A").format("HH:mm")
+  }
+
 </script>
 
 
@@ -75,9 +79,9 @@
             <Radio now={true} future{false} title={items[0].values[0][1]} scheduleData={items[1]} date={items[0].values[0][0]} />
           {:else}
             {#if (isFuture(items[0].values[0]))}
-              <Radio now={false} future={true} date={items[0].values[0][0]} time={items[0].values[0][2]} />
+              <Radio now={false} future={true} date={items[0].values[0][0]} time={returnTime(items[0].values[0][2])} />
             {:else}
-              <Radio now={false} future={false} date={items[0].values[0][0]} time={items[0].values[0][2]} />
+              <Radio now={false} future={false} date={items[0].values[0][0]} time={returnTime(items[0].values[0][2])} />
             {/if}
           {/if}
       {/await}

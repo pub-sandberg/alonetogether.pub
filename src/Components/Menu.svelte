@@ -1,4 +1,6 @@
 <script>
+  import moment from 'moment'
+
   // export let url
   import { Router, Link, Route } from "svelte-routing";
   import { isMobile } from '../store.js'
@@ -7,23 +9,32 @@
   function handleChatClick() {
     console.log('show chat on mobile')
   }
+
+  let start = moment("2020-03-15", "YYYY-MM-DD");
+  let end = moment()
+  let endFormat = end.format('LL')
+  let daysPassed = parseInt(moment.duration(end.diff(start)).asDays())
+
 </script>
 
 <nav class = {"menu"}>
-  <div class = "menu_title">
-    <Router>
-      <Link to="/">ALONE TOGETHER</Link>
-    </Router>
-  </div>
-  <div class = "menu_link">
-    {#if $isMobile}
-      <div class = "menu_link-chat" on:click={() => handleChatClick()}>CHAT</div>
-    {:else}
+  <div class = "menu-left">
+    <div class = "menu-left_title">
       <Router>
-        <Link to="/information-desk">INFORMATION DESK</Link>
+        <Link to="/">ALONE TOGETHER</Link>
       </Router>
-    {/if}
+    </div>
+    <div class = "menu-left_link">
+      {#if $isMobile}
+        <div class = "menu-left_link-chat" on:click={() => handleChatClick()}>CHAT</div>
+      {:else}
+        <Router>
+          <Link to="/information-desk">INFORMATION DESK</Link>
+        </Router>
+      {/if}
+    </div>
   </div>
+  <div class = "menu-right">{daysPassed} days alone together</div>
 </nav>
 
 <style lang="scss" global>
@@ -43,65 +54,76 @@
     display: flex;
     align-items: center;
     z-index: 3;
-    &_title {
-      @include type-sans-md;
-      color: white;
-      padding: $padding calc(#{$padding} * 2) $padding calc(#{$padding} * 2);
-      border: solid white 1px;
-      // border-top: 0;
-      // border-left: 0;
-      // border-bottom: 0;
-      // height: 100%;
+    justify-content: space-between;
+    &-left {
       display: flex;
-      align-items: center;
-      border-radius: 10px 10px;
-      margin-right: $padding;
-      @include bp-xs {
-        margin-left: $padding;
-      }
-      & a {
+      margin-left: calc(#{$padding} / 2);
+      // flex
+      &_title {
+        @include type-sans-md;
         color: white;
-        text-decoration: none;
+        padding: $padding calc(#{$padding} * 2) $padding calc(#{$padding} * 2);
+        border: solid white 1px;
+        // border-top: 0;
+        // border-left: 0;
+        // border-bottom: 0;
+        // height: 100%;
+        display: flex;
+        align-items: center;
+        border-radius: 10px 10px;
+        margin-right: $padding;
+        @include bp-xs {
+          margin-left: $padding;
+        }
+        & a {
+          color: white;
+          text-decoration: none;
+        }
+        @media (hover: hover) {
+          &:hover {
+            background: white;
+            & a {
+              color: black;
+            }
+          }
+        }
       }
-      @media (hover: hover) {
-        &:hover {
-          background: white;
-          & a {
-            color: black;
+      &_link {
+        @include type-sans-md;
+        color: white;
+        padding: $padding calc(#{$padding} * 2) $padding calc(#{$padding} * 2);
+        border: solid white 1px;
+        border-radius: 10px 10px;
+        // border-top: 0;
+        // border-left: 0;
+        // border-bottom: 0;
+        // height: 100%;
+        display: flex;
+        align-items: center;
+        // align-self: flex-end;
+
+        // temp
+        @include bp-xs {
+          display: none;
+        }
+        & a {
+          color: white;
+          text-decoration: none;
+        }
+        @media (hover: hover) {
+          &:hover {
+            background: white;
+            & a {
+              color: black;
+            }
           }
         }
       }
     }
-    &_link {
-      @include type-sans-md;
+    &-right {
       color: white;
-      padding: $padding calc(#{$padding} * 2) $padding calc(#{$padding} * 2);
-      border: solid white 1px;
-      border-radius: 10px 10px;
-      // border-top: 0;
-      // border-left: 0;
-      // border-bottom: 0;
-      // height: 100%;
-      display: flex;
-      align-items: center;
-      // align-self: flex-end;
-
-      // temp
-      @include bp-xs {
-        display: none;
-      }
-      & a {
-        color: white;
-        text-decoration: none;
-      }
-      @media (hover: hover) {
-        &:hover {
-          background: white;
-          & a {
-            color: black;
-          }
-        }
-      }
+      margin-right: $padding;
+      justify-content: center;
     }
   }
 

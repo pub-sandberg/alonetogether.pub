@@ -47,9 +47,10 @@
       }
     }
     else {
-      return 'ON' + ' ' + date.format('DD/MM/YYYY')
+      return 'ON' + ' ' + date.format('DD/MM/YYYY', 'hh:ss')
     }
   }
+
 
 </script>
 

@@ -10,8 +10,23 @@
 
 <div class = {"feed-container"}>
   <div class = "feed-container_inner">
-    Today is {endFormat}<br/>
-    We have passed {daysPassed} days alone together
+    <!-- Today is {endFormat}<br/>
+    We have passed {daysPassed} days alone together -->
+    <div>JUSTICE FOR GEORGE FLOYD</div>
+    <!-- <div>-</div> -->
+    <div>Follow links below to support financially</div>
+    <div>–</div>
+    <div><a href="https://minnesotafreedomfund.org/" target="_blank">Minnesota Freedom Fund</a></div>
+    <div><a href="https://www.gofundme.com/f/georgefloyd" target="_blank">Memorial fund for George Floyd</a></div>
+    <div><a href="https://www.reclaimtheblock.org/home" target="_blank">Reclaim the Block</a></div>
+    <div><a href="https://www.blackvisionsmn.org/" target="_blank">Black Visions Collective</a></div>
+    <div><a href="https://www.northstarhealthcollective.org/" target="_blank">North Star Health Collective</a></div>
+    <div><a href="https://www.gofundme.com/f/george-floyd-bigfloyd" target="_blank">GoFundMe for George Floyd</a></div>
+    <div><a href="https://brooklynbailfund.org/" target="_blank">Brooklyn community bail fund</a></div>
+    <div><a href="https://www.communityjusticeexchange.org/nbfn-directory" target="_blank">Directory of Community bail funds (all states)</a></div>
+    <div>–</div>
+    <div>BLACK LIVES MATTER</div>
+    
   </div>
 </div>
 
@@ -26,13 +41,26 @@
     border-left: 0;
     border-bottom: 0;
     border-right: 0;
-    color: $lime;
+    // color: $lime;
+    color: white;
     justify-content: center;
     align-items: center;
     display: flex;
+    background: black;
+    overflow: scroll;
     &_inner {
       @include type-sans-lg;
       text-align: center;
+      padding: $padding;
+      & div {
+        margin-bottom: .5rem;
+      }
+      & div:last-child {
+        margin-bottom: 1rem;
+      }
+      & a {
+        color: white;
+      }
     }
   }
 
