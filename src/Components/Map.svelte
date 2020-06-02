@@ -26,12 +26,11 @@
 	})
 
 	function bindListeners() {
-		console.log('bind listeners to map')
 		let dots = Array.from(document.querySelectorAll('svg circle'))
 		dots.forEach((dot, key) => {
 			dot.addEventListener('click', function(event) {
 				let path = event.target.getAttribute('id').replace(/\s+/g, '-')
-				path === 'home' ? navigate('/', { replace: false }) : navigate(path, { replace: false })
+				path === 'home' ? navigate('/', { replace: false }) : navigate(path.toLowerCase(), { replace: false })
 			})
 			dot.addEventListener('mouseover', function(event) {
 				let pathName = event.target.getAttribute('id')
@@ -81,6 +80,7 @@
 		.st4{fill:#CF7A29;}
 		.st5{fill:#8ECFBA;}
 		.st6{fill:#8ECFBA;}
+		.st7{fill:#E2C38A;}
 	</style>
 	<circle id="home" class="st0 inactive" cx="238.1" cy="832.1" r="14"/>
 	<g id="land">
@@ -477,9 +477,10 @@
 	<circle id="information desk" class="st3 inactive" cx="244.5" cy="553" r="23.9"/>
 	<circle id="canteen" class="st3 inactive" cx="-59" cy="1038.3" r="12.3"/>
 	<circle id="guestbook" class="st4 inactive" cx="413.3" cy="1097.8" r="23.9"/>
-	<circle id="library" class="st4 inactive" cx="21.2" cy="677.5" r="23.9"/>
+	<circle id="library" class="st4 inactive" cx="40.2" cy="677.5" r="23.9"/>
 	<circle id="cinema" class="st5 inactive" cx="66.6" cy="434.8" r="14"/>
-	<circle id="radio archive" class="st6 inactive" cx="40.5" cy="900" r="18"/>
+	<circle id="radio archive" class="st6 inactive" cx="40.5" cy="950" r="18"/>
+	<circle id="PUB e PUB" class="st7 inactive" cx="-80" cy="800" r="18"/>
 
 	</svg>
 

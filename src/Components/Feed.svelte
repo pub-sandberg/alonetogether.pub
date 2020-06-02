@@ -58,8 +58,12 @@
       & div:last-child {
         margin-bottom: 1rem;
       }
-      & a {
+      & div a {
+        text-decoration: none;
         color: white;
+        &:hover {
+          color: $lime;
+        }
       }
     }
   }

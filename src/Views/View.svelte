@@ -15,6 +15,8 @@
     <Route path="information-desk" name="information-desk" component="{Frame}" />
     <Route path="radio-archive" name="radio-archive" component="{Frame}" />
     <Route path="guestbook" name="guestbook" component="{Frame}" />
+    <!-- post url for epub stream here -->
+    <Route path="pub-e-pub" component="{Frame}" name="pub-e-pub" url="" />
     <Route path="/" name="home" component="{Frame}" />
   </Router>
 </div>
