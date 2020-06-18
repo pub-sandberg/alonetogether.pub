@@ -40,14 +40,14 @@
     let date = moment(str, 'DD-MM-YYYY')
     if (date.diff(current, 'days') === 0) {
       if (date.isSame(current, 'day')) {
-        return 'TODAY'
+        return 'today'
       }
       else {
-        return 'TOMORROW'
+        return 'tomorrow'
       }
     }
     else {
-      return 'ON' + ' ' + date.format('DD/MM/YYYY', 'hh:ss')
+      return date.format('DD.MM.YYYY', 'hh:ss')
     }
   }
 
@@ -83,9 +83,40 @@
     <Schedule scheduleData={scheduleData} />
   {:else}
     {#if future}
-      <div class = "footer-radio-container_message">NO RADIO RIGHT NOW &#x1F61E;NEXT SHOW WILL BE {returnFutureDate(date)} AT {time} &#x1F4E1;<br/><span class = "refresh" on:click={handleRefreshClick}>ALREADY {time}? TRY AGAIN</span></div>
+      <div class = "footer-radio-container_audio-btn refresh" on:click={handleRefreshClick}>
+        <!-- <img src = 'images/unhappy.svg' /> -->
+        <span>↻</span>
+      </div>
+        <div class = "footer-radio-container_playing">
+          <Ticker duration={35}>
+            <!-- repeat so anim always kicks off  -->
+            {#each Array(5) as _, i}
+              <div class = "footer-radio-container_playing_title">
+                <span>PUB Radio</span> is offline, we will be back on {returnFutureDate(date)} at {time} 💫
+              </div>
+            {/each}
+          </Ticker>
+        </div>
+        <Schedule scheduleData={scheduleData} />
+      <!-- <div class = "footer-radio-container_message">NO RADIO RIGHT NOW &#x1F61E;NEXT SHOW WILL BE {returnFutureDate(date)} AT {time} &#x1F4E1;<br/><span class = "refresh" on:click={handleRefreshClick}>ALREADY {time}? TRY AGAIN</span></div> -->
     {:else}
-      <div class = "footer-radio-container_message">NO RADIO RIGHT NOW &#x1F61E;</div>
+    <div class = "footer-radio-container_audio-btn refresh" on:click={handleRefreshClick}>
+      <!-- <img src = 'images/unhappy.svg' /> -->
+      <span>↻</span>
+    </div>
+      <div class = "footer-radio-container_playing">
+        <Ticker duration={35}>
+          <!-- repeat so anim always kicks off  -->
+          {#each Array(5) as _, i}
+            <div class = "footer-radio-container_playing_title">
+              <span>PUB Radio</span> is offline, we will be back on soon 💫
+            </div>
+          {/each}
+        </Ticker>
+      </div>
+      <Schedule scheduleData={scheduleData} />
+
+      <!-- <div class = "footer-radio-container_message">NO RADIO RIGHT NOW &#x1F61E;</div> -->
     {/if}
   {/if}
 
@@ -99,7 +130,8 @@
   .footer-radio-container {
     // 250px is a fixed width of the chatbox
     // will make it a variable
-    width: calc(100% - #{$chatWidth});
+    // width: calc(100% - #{$chatWidth});
+    width: 75%;
     height: 100%;
     align-content: flex-end;
     display: flex;
@@ -108,6 +140,7 @@
     border-top: 0;
     border-left: 0;
     border-bottom: 0;
+    border-right: 0;
     @include bp-xs {
       width: 100%;
       border: none;
@@ -175,6 +208,18 @@
         // background: white;
         color: black;
       }
+      &.refresh {
+        color: $lime;
+        @include type-sans-lg;
+        font-size: 2.5rem !important;
+        & span {
+          transform: rotate(90deg);
+        }
+        &:hover {
+          background: white;
+          color: black;
+        }
+      }
     }
     &_playing {
       width: calc(65% - (#{$footerHeight} / 2));
@@ -210,7 +255,8 @@
       overflow: scroll;
       border: solid white 1px;
       border-radius: 25px 25px;
-      color: white;
+      // color: white;
+      color: $lime;
       // background: black;
       // margin-right: $padding;
       display: flex;

@@ -61,7 +61,7 @@
       // flex
       &_title {
         @include type-sans-md;
-        color: white;
+        color: $lime;
         padding: $padding calc(#{$padding} * 2) $padding calc(#{$padding} * 2);
         border: solid white 1px;
         // border-top: 0;
@@ -71,12 +71,12 @@
         display: flex;
         align-items: center;
         border-radius: 10px 10px;
-        margin-right: $padding;
+        margin-right: calc(#{$padding} / 2);
         @include bp-xs {
           margin-left: $padding;
         }
         & a {
-          color: white;
+          color: $lime;
           text-decoration: none;
         }
         @media (hover: hover) {
@@ -90,7 +90,7 @@
       }
       &_link {
         @include type-sans-md;
-        color: white;
+        color: $lime;
         padding: $padding calc(#{$padding} * 2) $padding calc(#{$padding} * 2);
         border: solid white 1px;
         border-radius: 10px 10px;
@@ -107,7 +107,7 @@
           display: none;
         }
         & a {
-          color: white;
+          color: $lime;
           text-decoration: none;
         }
         @media (hover: hover) {

@@ -15,6 +15,7 @@
     "autoprefixer": "^9.7.5",
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
+    "draggable": "^4.2.0",
     "google-sheets-api": "^0.4.2",
     "google-spreadsheet": "^3.0.11",
     "googleapis": "^48.0.0",

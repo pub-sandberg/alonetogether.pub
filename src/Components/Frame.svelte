@@ -7,6 +7,7 @@
   import Feed from './Feed.svelte';
   import RadioArchive from './RadioArchive.svelte';
   import Library from './Library.svelte'
+  import Guidelines from './Guidelines.svelte'
   import { fullScreen, isCinema } from '../store.js'
   import Loader from './Global/Loader.svelte'
 
@@ -56,6 +57,8 @@
   {:else if name === 'home'}
     <Calendar />
     <Feed />
+  {:else if name === 'guidelines'}
+    <Guidelines />
   {:else}
     <div class = "coming-soon">
       <div class = "coming-soon_inner">

@@ -1,14 +1,45 @@
 <script>
+  import Draggable from 'Draggable'
+  import { onMount } from 'svelte';
   let isOpen = false 
   export let scheduleData
   const schedule = scheduleData.values
 
   function handleClick() {
-    isOpen ? isOpen = false : isOpen = true
+    // isOpen ? isOpen = false : isOpen = true
+    if (isOpen) {
+      isOpen = false 
+    }
+    else {
+      isOpen = true
+      // timeout waits for box to load
+      setTimeout(() => {
+        makeDraggable()
+      }, 1000)
+    }
   }
 
   function handleClose() {
     isOpen = false
+  }
+
+  function makeDraggable() {
+    console.log('make draggable')
+    let scheduleBox = document.getElementsByClassName('radio-schedule-box')[0]
+    let scheduleBoxWidth = scheduleBox.clientWidth
+    let scheduleBoxHeight = scheduleBox.clientHeight
+    let limitXLeft = 0
+    let limitXRight = (window.innerWidth - scheduleBoxWidth)
+    let limitYTop = 0
+    let limitYBottom = (window.innerHeight - scheduleBoxHeight)
+    let options = {
+      setPosition: false,
+      limit: {
+        x: [limitXLeft, limitXRight],
+        // y: [limitYTop, limitYBottom],
+      }
+    }
+    new Draggable(scheduleBox, options)
   }
 
 </script>
@@ -16,15 +47,19 @@
 {#if isOpen}
 <div class = "radio-schedule-box">
   <div class = "radio-schedule-box_close" on:click={handleClose}>CLOSE</div>
-  {#each schedule as entry}
-    {#if entry[2] !== undefined}
-    <div class = "radio-schedule-box_entry">
-      <div class = "radio-schedule-box_entry_time">{entry[0]}</div>
-      <div class = "radio-schedule-box_entry_title">{entry[2]}</div>
-      <div class = "radio-schedule-box_entry_title">w/ {entry[3]}</div>
-    </div>
-    {/if}
-  {/each}
+  {#if scheduleData !== false}
+    {#each schedule as entry}
+      {#if entry[2] !== undefined}
+      <div class = "radio-schedule-box_entry">
+        <div class = "radio-schedule-box_entry_time">{entry[0]}</div>
+        <div class = "radio-schedule-box_entry_title">{entry[2]}</div>
+        <div class = "radio-schedule-box_entry_title">w/ {entry[3]}</div>
+      </div>
+      {/if}
+    {/each}
+  {:else}
+    <div class = "radio-schedule-box_entry">PUB Radio is off air today, check the event calendar for other events</div>
+  {/if}
 </div>
 {/if}
 
@@ -50,6 +85,7 @@
     overflow: scroll;
     padding: calc(#{$padding} / 2);
     min-width: 250px;
+    cursor: move;
     &_close {
       @include type-sans-sm;
       align-self: flex-end;

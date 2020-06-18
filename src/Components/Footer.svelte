@@ -9,7 +9,7 @@
 
   moment.tz.setDefault("Europe/Amsterdam");
 
-  import { isMobile, isCinema } from '../store.js'
+  import { isMobile, isCinema, chatOpen } from '../store.js'
 
   console.log('is mobile?', $isMobile)
   
@@ -60,6 +60,10 @@
     return moment(time, "h:mm:ss A").format("HH:mm")
   }
 
+  function handleChatClick() {
+    $chatOpen ? chatOpen.set(false) : chatOpen.set(true)
+  }
+
 </script>
 
 
@@ -79,19 +83,27 @@
             <Radio now={true} future{false} title={items[0].values[0][1]} scheduleData={items[1]} date={items[0].values[0][0]} />
           {:else}
             {#if (isFuture(items[0].values[0]))}
-              <Radio now={false} future={true} date={items[0].values[0][0]} time={returnTime(items[0].values[0][2])} />
+              <Radio now={false} future={true} date={items[0].values[0][0]} scheduleData={items[1]} time={returnTime(items[0].values[0][2])} />
             {:else}
-              <Radio now={false} future={false} date={items[0].values[0][0]} time={returnTime(items[0].values[0][2])} />
+              <Radio now={false} future={false} date={items[0].values[0][0]} scheduleData={false} time={returnTime(items[0].values[0][2])} />
             {/if}
           {/if}
       {/await}
     {/if}
     {#if !$isMobile}
+      <!-- <div class = "footer-chat-btn"></div> -->
       <div class = "footer-chat-container">
         {#if data !== undefined}
-          <div class = "footer-chat-container_label">CHAT</div>
+          <div class = "footer-chat-container_btn" on:click={handleChatClick}>CHATROOM</div>
         {/if}
-        <Chat type='radio' />
+        {#if $chatOpen}
+          <!-- <h1>CHAT HERE</h1> -->
+          <Chat type='radio' />
+        {/if}
+        <!-- {#if data !== undefined}
+          <div class = "footer-chat-container_label">CHAT</div>
+        {/if} -->
+        <!-- <Chat type='radio' /> -->
       </div>
     {/if}
   <!-- {/if} -->
@@ -115,16 +127,36 @@
     border-right: 0;
     border-bottom: 0;
     // background: black;
+    // ... 
   }
+
 
   .footer-chat-container {
     // set in embed
-    width: $chatWidth;
+    // width: $chatWidth;
+    width: 25%;
     display: flex;
     height: 100%;
+    // ...
+    padding: calc(#{$padding} / 2) calc(#{$padding} / 2) calc(#{$padding} / 2) 0;
+    &_btn {
+      color: $lime;
+      @include type-sans-lg;
+      border: solid white 1px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 25px 25px;
+      cursor: pointer;
+      &:hover {
+        background: white;
+        color: black;
+      }
+    }
     &_label {
       height: 20px;
-      border: solid white 1px;
+      // border: solid white 1px;
       border-right: 0;
       border-top: 0;
       border-left: 0;
