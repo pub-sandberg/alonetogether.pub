@@ -68,10 +68,6 @@
 
 
 <div class = "footer">
-  <!-- {#if $isCinema} -->
-    <!-- <div>Cinema footer</div> -->
-    <!-- <Chat type='cinema' /> -->
-  <!-- {:else} -->
     {#if data === undefined}
       <div>Loading...</div>
     {:else}
@@ -90,23 +86,16 @@
           {/if}
       {/await}
     {/if}
-    {#if !$isMobile}
-      <!-- <div class = "footer-chat-btn"></div> -->
+    <!-- {#if !$isMobile} -->
       <div class = "footer-chat-container">
         {#if data !== undefined}
           <div class = "footer-chat-container_btn" on:click={handleChatClick}>CHATROOM</div>
         {/if}
         {#if $chatOpen}
-          <!-- <h1>CHAT HERE</h1> -->
           <Chat type='radio' />
         {/if}
-        <!-- {#if data !== undefined}
-          <div class = "footer-chat-container_label">CHAT</div>
-        {/if} -->
-        <!-- <Chat type='radio' /> -->
       </div>
-    {/if}
-  <!-- {/if} -->
+    <!-- {/if} -->
 </div>
 
 <style lang="scss" global>
@@ -152,6 +141,9 @@
       &:hover {
         background: white;
         color: black;
+      }
+      @include bp-xs {
+        @include type-sans-sm;
       }
     }
     &_label {

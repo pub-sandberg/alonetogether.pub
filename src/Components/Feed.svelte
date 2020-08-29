@@ -12,23 +12,24 @@
   <div class = "feed-container_inner">
     <!-- Today is {endFormat}<br/>
     We have passed {daysPassed} days alone together -->
-    <div>JUSTICE FOR GEORGE FLOYD</div>
-    <!-- <div>-</div> -->
-    <div>Follow links below to support financially</div>
-    <div>–</div>
-    <div><a href="https://minnesotafreedomfund.org/" target="_blank">Minnesota Freedom Fund</a></div>
-    <div><a href="https://www.gofundme.com/f/georgefloyd" target="_blank">Memorial fund for George Floyd</a></div>
-    <div><a href="https://www.reclaimtheblock.org/home" target="_blank">Reclaim the Block</a></div>
-    <div><a href="https://www.blackvisionsmn.org/" target="_blank">Black Visions Collective</a></div>
-    <div><a href="https://www.northstarhealthcollective.org/" target="_blank">North Star Health Collective</a></div>
-    <div><a href="https://www.gofundme.com/f/george-floyd-bigfloyd" target="_blank">GoFundMe for George Floyd</a></div>
-    <div><a href="https://brooklynbailfund.org/" target="_blank">Brooklyn community bail fund</a></div>
-    <div><a href="https://www.communityjusticeexchange.org/nbfn-directory" target="_blank">Directory of Community bail funds (all states)</a></div>
-    <div>–</div>
-    <div>BLACK LIVES MATTER</div>
-    
+    <a href='https://blacklivesmatters.carrd.co' target='_blank'>https://blacklivesmatters.carrd.co</a>
   </div>
 </div>
+
+<!-- <div>JUSTICE FOR GEORGE FLOYD</div> -->
+<!-- <div>-</div> -->
+<!-- <div>Follow links below to support financially</div> -->
+<!-- <div>–</div> -->
+<!-- <div><a href="https://minnesotafreedomfund.org/" target="_blank">Minnesota Freedom Fund</a></div> -->
+<!-- <div><a href="https://www.gofundme.com/f/georgefloyd" target="_blank">Memorial fund for George Floyd</a></div> -->
+<!-- <div><a href="https://www.reclaimtheblock.org/home" target="_blank">Reclaim the Block</a></div> -->
+<!-- <div><a href="https://www.blackvisionsmn.org/" target="_blank">Black Visions Collective</a></div> -->
+<!-- <div><a href="https://www.northstarhealthcollective.org/" target="_blank">North Star Health Collective</a></div> -->
+<!-- <div><a href="https://www.gofundme.com/f/george-floyd-bigfloyd" target="_blank">GoFundMe for George Floyd</a></div> -->
+<!-- <div><a href="https://brooklynbailfund.org/" target="_blank">Brooklyn community bail fund</a></div> -->
+<!-- <div><a href="https://www.communityjusticeexchange.org/nbfn-directory" target="_blank">Directory of Community bail funds (all states)</a></div> -->
+<!-- <div>–</div> -->
+<!-- <div>BLACK LIVES MATTER</div> -->
 
 <style lang="scss" global>
   @import "./style/global.scss";
@@ -57,6 +58,10 @@
       }
       & div:last-child {
         margin-bottom: 1rem;
+      }
+      & a {
+        color: $lime;
+        text-decoration: none;
       }
       & div a {
         text-decoration: none;

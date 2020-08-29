@@ -1,14 +1,7 @@
 <script>
   import moment from 'moment'
-
-  // export let url
   import { Router, Link, Route } from "svelte-routing";
   import { isMobile } from '../store.js'
-
-  // w.i.p
-  function handleChatClick() {
-    console.log('show chat on mobile')
-  }
 
   let start = moment("2020-03-15", "YYYY-MM-DD");
   let end = moment()
@@ -26,7 +19,7 @@
     </div>
     <div class = "menu-left_link">
       {#if $isMobile}
-        <div class = "menu-left_link-chat" on:click={() => handleChatClick()}>CHAT</div>
+        <div class = "menu-left_link-chat">CHAT</div>
       {:else}
         <Router>
           <Link to="/information-desk">INFORMATION DESK</Link>
@@ -46,7 +39,6 @@
     top: 0;
     width: 100%;
     height: $menuHeight;
-    // background: black;
     border: solid white 1px;
     border-top: 0;
     border-right: 0;
@@ -64,10 +56,6 @@
         color: $lime;
         padding: $padding calc(#{$padding} * 2) $padding calc(#{$padding} * 2);
         border: solid white 1px;
-        // border-top: 0;
-        // border-left: 0;
-        // border-bottom: 0;
-        // height: 100%;
         display: flex;
         align-items: center;
         border-radius: 10px 10px;
@@ -94,15 +82,8 @@
         padding: $padding calc(#{$padding} * 2) $padding calc(#{$padding} * 2);
         border: solid white 1px;
         border-radius: 10px 10px;
-        // border-top: 0;
-        // border-left: 0;
-        // border-bottom: 0;
-        // height: 100%;
         display: flex;
         align-items: center;
-        // align-self: flex-end;
-
-        // temp
         @include bp-xs {
           display: none;
         }

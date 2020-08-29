@@ -14,8 +14,7 @@
     <Route path="information-desk" name="information-desk" component="{Frame}" />
     <Route path="radio-archive" name="radio-archive" component="{Frame}" />
     <Route path="guestbook" name="guestbook" component="{Frame}" />
-    <!-- post url for epub stream here -->
-    <Route path="pub-e-pub" component="{Frame}" name="pub-e-pub" url="https://www.youtube.com/embed/OwIhVFTsrl4" />
+    <Route path="pub-e-pub" component="{Frame}" name="pub-e-pub" />
     <Route path="community-guidelines" component="{Frame}" name="guidelines" />
     <Route path="/" name="home" component="{Frame}" />
   </Router>
@@ -27,9 +26,7 @@
 
   .view-container {
     width: 66.6%;
-    // height: calc(100% - #{$footerHeight});
     height: calc(100% - (#{$footerHeight} + #{$menuHeight}));
-		// padding-bottom: $menuHeight;
     display: flex;
     border: solid white 1px;
     border-right: 0;
