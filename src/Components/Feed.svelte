@@ -10,9 +10,11 @@
 
 <div class = {"feed-container"}>
   <div class = "feed-container_inner">
+    <!-- <a href = "/..">TEST</a> -->
+    <img src = './images/radio.jpeg' />
     <!-- Today is {endFormat}<br/>
     We have passed {daysPassed} days alone together -->
-    <a href='https://blacklivesmatters.carrd.co' target='_blank'>https://blacklivesmatters.carrd.co</a>
+    <!-- <a href='https://blacklivesmatters.carrd.co' target='_blank'>https://blacklivesmatters.carrd.co</a> -->
   </div>
 </div>
 
@@ -47,12 +49,22 @@
     justify-content: center;
     align-items: center;
     display: flex;
-    background: black;
+    // background: black;
     overflow: scroll;
     &_inner {
       @include type-sans-lg;
       text-align: center;
-      padding: $padding;
+      // padding: $padding;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        // filter: greyscale();
+      }
       & div {
         margin-bottom: .5rem;
       }

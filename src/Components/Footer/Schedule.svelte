@@ -24,7 +24,6 @@
   }
 
   function makeDraggable() {
-    console.log('make draggable')
     let scheduleBox = document.getElementsByClassName('radio-schedule-box')[0]
     let scheduleBoxWidth = scheduleBox.clientWidth
     let scheduleBoxHeight = scheduleBox.clientHeight
@@ -42,6 +41,10 @@
     new Draggable(scheduleBox, options)
   }
 
+  function returnArtist(str) {
+    return typeof(str) !== 'undefined' ? 'w/' + ' ' + str : ''
+  }
+
 </script>
 
 {#if isOpen}
@@ -53,7 +56,7 @@
       <div class = "radio-schedule-box_entry">
         <div class = "radio-schedule-box_entry_time">{entry[0]}</div>
         <div class = "radio-schedule-box_entry_title">{entry[2]}</div>
-        <div class = "radio-schedule-box_entry_title">w/ {entry[3]}</div>
+        <div class = "radio-schedule-box_entry_title">{returnArtist(entry[3])}</div>
       </div>
       {/if}
     {/each}
