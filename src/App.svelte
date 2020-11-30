@@ -45,9 +45,9 @@
 	<View />
 	<Footer />
 </main>
-<div class = "background-image">
+<!-- <div class = "background-image">
 	<img src = 'images/background.jpg'/>
-</div>
+</div> -->
 
 <style lang="scss" global>
 

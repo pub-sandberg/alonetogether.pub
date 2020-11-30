@@ -494,7 +494,7 @@
 	@import "./style/helpers.scss";
 
   .map-container {
-		height: calc(100% - #{$footerHeight});
+		height: calc(100% - calc(#{$footerHeight} + #{$menuHeight}));
 		// background: black;
 		display: flex;
 		align-items: center;

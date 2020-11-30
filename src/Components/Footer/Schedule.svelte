@@ -5,6 +5,10 @@
   export let scheduleData
   const schedule = scheduleData.values
 
+  setTimeout(function() {
+    console.log('schedule data', schedule)
+  }, 1000)
+
   function handleClick() {
     // isOpen ? isOpen = false : isOpen = true
     if (isOpen) {
@@ -61,7 +65,7 @@
       {/if}
     {/each}
   {:else}
-    <div class = "radio-schedule-box_entry">PUB Radio is off air today, check the event calendar for other events</div>
+    <div class = "radio-schedule-box_entry">PUB Radio is off air right now, check the calendar for other events</div>
   {/if}
 </div>
 {/if}

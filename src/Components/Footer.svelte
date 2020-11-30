@@ -22,6 +22,7 @@
   async function getData() {
     try {
       let response = await axios.get(reqUrl);
+      console.log('response?', response)
       data = response.data.valueRanges
     } catch (error) {
       // throw error
@@ -47,7 +48,7 @@
 
     return current.isBetween(startTime, endTime)
   }
-
+  
   function isFuture(data) {
     let dateString = data[0] 
     let date = moment(dateString, 'DD-MM-YYYY')

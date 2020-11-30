@@ -52,8 +52,13 @@
     <InformationDesk />
   {:else if name === 'radio-archive'}
     <RadioArchive />
-  {:else if name === 'library'}
-    <Library />
+  {:else if name === 'library'} -->
+    <!-- <Library /> -->
+    <div class = "coming-soon">
+      <div class = "coming-soon_inner">
+        <span>Back Soon</span>
+      </div>
+    </div>
   {:else if name === 'home'}
     <Calendar />
     <Feed />
